@@ -1,0 +1,118 @@
+{
+  "knowledge_base_meta": {
+    "project": "GharDisha AI — AI Climate-Displacement Case Interpreter for PMAY-G Navigation",
+    "purpose": "Curated source-grounded snippets for RAG retrieval. All wording is deliberately conservative ('may', 'depends on official verification') to support responsible-AI requirements and avoid guarantee language.",
+    "last_verified": "2026-06-17",
+    "verification_note": "Facts cross-checked against PIB releases and MoRD sources as of June 2026. Re-confirm time-sensitive details on official PMAY-G, MoRD, and PIB sources before production use. Treat all output as source-grounded guidance for official verification, never as a verdict.",
+    "scheme_full_name": "Pradhan Mantri Awaas Yojana - Gramin (PMAY-G)"
+  },
+  "snippets": [
+    {
+      "id": "pmayg-001-assistance-amount",
+      "topic": "Unit assistance amount",
+      "text": "PMAY-G provides unit assistance of Rs. 1.20 lakh in plain areas and Rs. 1.30 lakh in North-Eastern states, hilly states, J&K/Ladakh, and difficult areas. The amount supports construction of a pucca house and is not a guaranteed grant until official verification is complete.",
+      "source_name": "Press Information Bureau, Ministry of Rural Development",
+      "source_date": "2025-03",
+      "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2112200",
+      "confidence": "high"
+    },
+    {
+      "id": "pmayg-002-cost-sharing",
+      "topic": "Centre-State cost sharing",
+      "text": "The unit cost is shared between Centre and State at 60:40 for plain areas, 90:10 for North-Eastern and Himalayan states, and is 100% centrally funded for Union Territories without a legislature.",
+      "source_name": "PMAY-G programme information (cross-referenced, MoRD)",
+      "source_date": "2025",
+      "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2112200",
+      "confidence": "high"
+    },
+    {
+      "id": "pmayg-003-convergence-benefits",
+      "topic": "Convergence benefits (beyond the house amount)",
+      "text": "In addition to unit assistance, a PMAY-G beneficiary may receive approximately 90 to 95 person-days of unskilled wage labour through MGNREGS for house construction, and toilet support of Rs. 12,000 through Swachh Bharat Mission-Gramin or other convergence sources. These are facilitated through the Gram Panchayat and depend on official linkage of the housing case.",
+      "source_name": "MoRD / PMAY-G convergence guidance (cross-referenced)",
+      "source_date": "2025-2026",
+      "source_url": "https://pmayg.dord.gov.in/netiayHome/Home.aspx",
+      "confidence": "high"
+    },
+    {
+      "id": "pmayg-004-eligibility-basics",
+      "topic": "Core eligibility conditions",
+      "text": "To be considered under PMAY-G, a household should generally be houseless or living in a kutcha or dilapidated house with zero, one, or two rooms, should not own a pucca house anywhere in the country, and should be a resident of the rural area where assistance is sought. Meeting these conditions does not by itself confirm eligibility; final selection depends on official data, Gram Sabha verification, and approval.",
+      "source_name": "PMAY-G beneficiary criteria (cross-referenced, MoRD)",
+      "source_date": "2025-2026",
+      "source_url": "https://www.myscheme.gov.in/schemes/pmay-g",
+      "confidence": "high"
+    },
+    {
+      "id": "pmayg-005-selection-basis",
+      "topic": "How beneficiaries are identified",
+      "text": "PMAY-G beneficiary identification is based on rural housing-deprivation parameters and exclusion criteria, drawing on SECC 2011 data and the Awaas+ list, followed by Gram Sabha verification and an appellate process. A household not already on the existing list may need to be captured through the official survey/updation process before it can be considered.",
+      "source_name": "Press Information Bureau, Ministry of Rural Development ('Transparency and Accountability under PMAY-G')",
+      "source_date": "2025-03-18",
+      "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2112200",
+      "confidence": "high"
+    },
+    {
+      "id": "pmayg-006-awaas-plus-2024",
+      "topic": "Awaas+ 2024 survey (new entry path)",
+      "text": "Awaas+ 2024 is the updation/survey exercise used to identify additional potentially eligible rural households for the 2024-29 phase of PMAY-G, through self-survey and Panchayat-assisted survey using the official Awaas+ 2024 mobile application. Being surveyed does not guarantee inclusion; records move through verification before any approval. A newly displaced family may need to check whether it is captured in Awaas+/SECC or requires a fresh survey and local verification.",
+      "source_name": "MoRD SOP for Self-Survey using Awaas+ 2024 Application",
+      "source_date": "2024-2025",
+      "source_url": "https://akam-samaveshivikaas.nic.in/netiay/awaasplus2.0_Doc/SOP_AwaasPlus2024.pdf",
+      "confidence": "medium-high"
+    },
+    {
+      "id": "pmayg-007-relaxed-exclusions",
+      "topic": "2024 relaxed exclusion criteria",
+      "text": "Under the 2024 modified exclusion criteria, several earlier disqualifiers were removed — owning a mechanised two-wheeler, a mechanised fishing boat, a landline phone, or a refrigerator no longer automatically excludes a household. Certain income, land, and asset conditions can still affect eligibility or exclusion and are checked through the official process.",
+      "source_name": "Press Information Bureau, Ministry of Rural Development ('Modified/automatic exclusion criteria, PMAY-G')",
+      "source_date": "2024-12",
+      "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2080091",
+      "confidence": "high"
+    },
+    {
+      "id": "pmayg-008-expansion-context",
+      "topic": "Scheme expansion (timeliness)",
+      "text": "The Union Cabinet approved an expansion of PMAY-G covering FY 2024-25 to FY 2028-29 for the construction of 2 crore additional rural houses, with a total outlay of about Rs. 3.06 lakh crore. The scheme is active and expanding.",
+      "source_name": "Press Information Bureau, Ministry of Rural Development",
+      "source_date": "2024-08 / 2025-03",
+      "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2080091",
+      "confidence": "high"
+    },
+    {
+      "id": "pmayg-009-disbursement",
+      "topic": "How money is paid",
+      "text": "Assistance is released in installments through Direct Benefit Transfer (DBT) to the beneficiary's Aadhaar-linked bank or post-office account. Aadhaar linkage and bank account readiness are practical prerequisites a family can prepare in advance.",
+      "source_name": "PMAY-G disbursement information (cross-referenced, MoRD)",
+      "source_date": "2025-2026",
+      "source_url": "https://pmayg.dord.gov.in/netiayHome/Home.aspx",
+      "confidence": "high"
+    },
+    {
+      "id": "pmayg-010-human-decision-boundary",
+      "topic": "Responsible-AI / human-in-the-loop boundary",
+      "text": "GharDisha AI does not determine final PMAY-G eligibility or approval. Final decisions remain with the Gram Sabha, the Block Development Officer (BDO), and official government verification. GharDisha AI only helps a family understand the system and prepare for that human process.",
+      "source_name": "GharDisha AI responsible-AI design statement",
+      "source_date": "2026-06",
+      "source_url": "internal",
+      "confidence": "design-statement"
+    },
+    {
+      "id": "pmayg-012-temporary-shelter-verification",
+      "topic": "Temporary shelter and verification safeguards",
+      "text": "A household temporarily staying with relatives, neighbours, a school shelter, or a relief shelter after disaster damage is not automatically eligible and not automatically rejected under PMAY-G. Officials must verify the household's own housing status, whether it owns any pucca house anywhere, whether the current shelter is temporary, whether the family appears in SECC/Awaas+ or needs survey/updation, and whether damage or displacement proof is available. Wrong or false information can be rejected during Gram Sabha, BDO, and official verification.",
+      "source_name": "PMAY-G beneficiary verification process (cross-referenced, MoRD / PIB)",
+      "source_date": "2025-2026",
+      "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2112200",
+      "confidence": "high"
+    }
+  ],
+  "ai_output_safety_rules": [
+    "Always use 'you may qualify' or 'may be eligible' — never 'you qualify' or 'you are eligible'.",
+    "State the basis of a decision (the rule and its source), never the verdict.",
+    "Never present income/land/asset thresholds as a pass/fail calculator; frame them as conditions the official process verifies.",
+    "Never claim displacement creates automatic priority or automatic inclusion unless an official source is cited.",
+    "Every output ends with the human-decision boundary (Gram Sabha / BDO / official verification).",
+    "Do not display a specific date or helpline number that has not been verified against an official source."
+  ]
+}
