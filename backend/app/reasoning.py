@@ -240,12 +240,15 @@ def language_instruction(language: str) -> str:
     if language == "en":
         return "Write all user-facing text in clear, simple English."
     return (
-        f"Write ALL user-facing text values (status, plain_language_summary, "
+        f"Write ALL user-facing text values in {name}: status, plain_language_summary, "
         f"biggest_obstacle, next_best_question, every item in next_48_hours, "
-        f"missing_or_uncertain_items, and questions_for_bdo_or_panchayat) in "
-        f"{name}. Use simple words a rural family can understand. Keep JSON keys, "
-        f"source IDs, and source names in English. Do not mix in English sentences "
-        f"for the user-facing text."
+        f"missing_or_uncertain_items, questions_for_bdo_or_panchayat, and human_in_loop. "
+        f"Use simple words a rural family can understand. Keep only technical/official tokens "
+        f"such as PMAY-G, Awaas+, SECC, BDO, Gram Sabha, Gram Panchayat, Aadhaar, and "
+        f"GharDisha AI in their original form when useful. Keep JSON keys, source IDs, and "
+        f"source names in English. Do not output English sentences, English action verbs "
+        f"like 'Request/Ask/Inquire/Prepare', or mixed English-Hindi/Tamil/Marathi/Assamese "
+        f"user-facing sentences."
     )
 
 
@@ -576,6 +579,7 @@ Return JSON with exactly these keys:
 }}
 
 Output requirements:
+- LANGUAGE LOCK: every user-facing value must be written in the selected language above. Do not leave English sentences in status, summary, obstacle, action steps, questions, missing items, or human_in_loop for non-English output.
 - The status must NOT say final eligibility.
 - biggest_obstacle: name the SPECIFIC blockers for THIS case. For a disaster-displaced
   family, this usually combines (a) missing disaster/damage proof such as a disaster/damage
@@ -672,6 +676,136 @@ _SAFE_FALLBACK = {
         ),
     },
 }
+
+
+_COMMON_LOCALIZATION_PHRASES = {
+    "Based on the information shared, this may be a PMAY-G navigation case. Final eligibility is not decided by this tool.": {
+        "hi": "दी गई जानकारी के आधार पर, यह PMAY-G से जुड़ा तैयारी मामला हो सकता है। अंतिम पात्रता यह टूल तय नहीं करता।",
+        "as": "দিয়া তথ্যৰ ভিত্তিত, এইটো PMAY-G সম্পৰ্কীয় প্রস্তুতিৰ ঘটনা হ’ব পাৰে। চূড়ান্ত যোগ্যতা এই সঁজুলিয়ে সিদ্ধান্ত নলয়।",
+        "ta": "பகிர்ந்த தகவல்களின் அடிப்படையில், இது PMAY-G வழிகாட்டல் தொடர்பான தயாரிப்பு வழக்காக இருக்கலாம். இறுதி தகுதியை இந்த கருவி தீர்மானிக்காது.",
+        "mr": "दिलेल्या माहितीनुसार, हा PMAY-G तयारीशी संबंधित मामला असू शकतो. अंतिम पात्रता हे साधन ठरवत नाही.",
+    },
+    "Final PMAY-G eligibility and approval remain with Gram Sabha, BDO, and official government verification. GharDisha AI only prepares the user for that process.": {
+        "hi": "PMAY-G की अंतिम पात्रता और मंजूरी ग्राम सभा, BDO और सरकारी जांच के बाद ही तय होती है। GharDisha AI केवल परिवार को उस प्रक्रिया के लिए तैयार करता है।",
+        "as": "PMAY-G ৰ চূড়ান্ত যোগ্যতা আৰু অনুমোদন Gram Sabha, BDO আৰু চৰকাৰী পৰীক্ষাৰ ওপৰত নিৰ্ভৰ কৰে। GharDisha AI কেৱল পৰিয়ালক সেই প্ৰক্ৰিয়াৰ বাবে সাজু কৰে।",
+        "ta": "PMAY-G இன் இறுதி தகுதி மற்றும் ஒப்புதல் Gram Sabha, BDO மற்றும் அரசு சரிபார்ப்பின் மூலம் மட்டுமே முடிவு செய்யப்படும். GharDisha AI குடும்பத்தை அந்த செயல்முறைக்கு தயார்படுத்த மட்டுமே உதவுகிறது.",
+        "mr": "PMAY-G ची अंतिम पात्रता आणि मंजुरी Gram Sabha, BDO आणि सरकारी पडताळणीनंतरच ठरते. GharDisha AI फक्त कुटुंबाला त्या प्रक्रियेसाठी तयार करते.",
+    },
+    "Request a disaster/damage certificate from the Gram Panchayat.": {
+        "hi": "Gram Panchayat से आपदा/नुकसान का प्रमाणपत्र या लिखित पत्र मांगें।",
+        "as": "Gram Panchayat-ৰ পৰা দুৰ্যোগ/ক্ষতিৰ প্ৰমাণপত্ৰ বা লিখিত চিঠি বিচাৰক।",
+        "ta": "Gram Panchayat-இல் இருந்து பேரிடர்/சேதச் சான்று அல்லது எழுத்து கடிதம் கேளுங்கள்.",
+        "mr": "Gram Panchayat कडून आपत्ती/नुकसान प्रमाणपत्र किंवा लेखी पत्र मागा.",
+    },
+    "Ask the Gram Panchayat if your family is on the Awaas+/SECC list.": {
+        "hi": "Gram Panchayat से पूछें कि आपके परिवार का नाम Awaas+ / SECC सूची में है या नहीं।",
+        "as": "আপোনাৰ পৰিয়ালৰ নাম Awaas+ / SECC তালিকাত আছে নে নাই Gram Panchayat-ত সোধক।",
+        "ta": "உங்கள் குடும்பப் பெயர் Awaas+ / SECC பட்டியலில் உள்ளதா என்று Gram Panchayat-இல் கேளுங்கள்.",
+        "mr": "आपल्या कुटुंबाचे नाव Awaas+ / SECC यादीत आहे का ते Gram Panchayat कडे विचारा.",
+    },
+    "Inquire whether a fresh Awaas+ survey/updation is needed.": {
+        "hi": "नया Awaas+ सर्वे या अपडेट जरूरी है या नहीं, यह पूछें।",
+        "as": "নতুন Awaas+ survey বা update লাগে নেকি সোধক।",
+        "ta": "புதிய Awaas+ survey அல்லது update தேவைப்படுகிறதா என்று கேளுங்கள்.",
+        "mr": "नवीन Awaas+ survey किंवा update गरजेचे आहे का ते विचारा.",
+    },
+    "Prepare your Aadhaar card and ration card for verification.": {
+        "hi": "जांच के लिए Aadhaar card और ration card तैयार रखें।",
+        "as": "যাচাইৰ বাবে Aadhaar card আৰু ration card সাজু ৰাখক।",
+        "ta": "சரிபார்ப்பிற்காக Aadhaar card மற்றும் ration card தயாராக வைத்திருக்கவும்.",
+        "mr": "पडताळणीसाठी Aadhaar card आणि ration card तयार ठेवा.",
+    },
+    "Ask what proof is accepted if your land documents were lost.": {
+        "hi": "अगर जमीन के कागज खो गए हैं, तो कौन सा प्रमाण स्वीकार होगा — यह पूछें।",
+        "as": "মাটিৰ নথি হেৰাই গ’লে কোন প্ৰমাণ গ্ৰহণ কৰা হ’ব সোধক।",
+        "ta": "நில ஆவணங்கள் இழந்திருந்தால் எந்த சான்று ஏற்கப்படும் என்று கேளுங்கள்.",
+        "mr": "जमीन कागदपत्रे हरवली असल्यास कोणता पुरावा स्वीकारला जाईल ते विचारा.",
+    },
+    "What is the process to obtain a disaster/damage certificate?": {
+        "hi": "आपदा/नुकसान प्रमाणपत्र लेने की प्रक्रिया क्या है?",
+        "as": "দুৰ্যোগ/ক্ষতিৰ প্ৰমাণপত্ৰ লোৱাৰ প্ৰক্ৰিয়া কি?",
+        "ta": "பேரிடர்/சேதச் சான்று பெறும் நடைமுறை என்ன?",
+        "mr": "आपत्ती/नुकसान प्रमाणपत्र मिळवण्याची प्रक्रिया काय आहे?",
+    },
+    "Can you confirm if my family is listed on the Awaas+/SECC list?": {
+        "hi": "क्या आप पुष्टि कर सकते हैं कि मेरे परिवार का नाम Awaas+ / SECC सूची में है या नहीं?",
+        "as": "মোৰ পৰিয়ালৰ নাম Awaas+ / SECC তালিকাত আছে নে নাই নিশ্চিত কৰিব পাৰিবনে?",
+        "ta": "என் குடும்பம் Awaas+ / SECC பட்டியலில் உள்ளதா என்பதை உறுதிப்படுத்த முடியுமா?",
+        "mr": "माझ्या कुटुंबाचे नाव Awaas+ / SECC यादीत आहे का ते आपण पुष्टी करू शकता का?",
+    },
+    "What documents do I need to provide for verification?": {
+        "hi": "जांच के लिए मुझे कौन से दस्तावेज देने होंगे?",
+        "as": "যাচাইৰ বাবে মোক কি নথি দিব লাগিব?",
+        "ta": "சரிபார்ப்பிற்கு நான் எந்த ஆவணங்களை வழங்க வேண்டும்?",
+        "mr": "पडताळणीसाठी मला कोणती कागदपत्रे द्यावी लागतील?",
+    },
+    "disaster/damage certificate": {
+        "hi": "आपदा/नुकसान प्रमाणपत्र",
+        "as": "দুৰ্যোগ/ক্ষতিৰ প্ৰমাণপত্ৰ",
+        "ta": "பேரிடர்/சேதச் சான்று",
+        "mr": "आपत्ती/नुकसान प्रमाणपत्र",
+    },
+    "land documents": {
+        "hi": "जमीन के कागज",
+        "as": "মাটিৰ নথি",
+        "ta": "நில ஆவணங்கள்",
+        "mr": "जमीन कागदपत्रे",
+    },
+    "Awaas+/SECC status": {
+        "hi": "Awaas+ / SECC स्थिति",
+        "as": "Awaas+ / SECC অৱস্থা",
+        "ta": "Awaas+ / SECC நிலை",
+        "mr": "Awaas+ / SECC स्थिती",
+    },
+}
+
+
+def _localize_common_text(value: Any, language: str) -> Any:
+    if language == "en" or not isinstance(value, str):
+        return value
+
+    text = value.strip()
+    if not text:
+        return value
+
+    for english, translations in _COMMON_LOCALIZATION_PHRASES.items():
+        translated = translations.get(language)
+        if not translated:
+            continue
+        if text == english:
+            return translated
+        text = text.replace(english, translated)
+
+    return text
+
+
+def _localize_common_action_plan_fragments(action_plan: dict[str, Any], language: str) -> dict[str, Any]:
+    """Lightweight final cleanup for common English fragments if the live model partially mixes languages."""
+    if language == "en" or not isinstance(action_plan, dict):
+        return action_plan
+
+    text_keys = [
+        "status",
+        "plain_language_summary",
+        "biggest_obstacle",
+        "next_best_question",
+        "human_in_loop",
+    ]
+    list_keys = [
+        "missing_or_uncertain_items",
+        "next_48_hours",
+        "questions_for_bdo_or_panchayat",
+    ]
+
+    for key in text_keys:
+        if key in action_plan:
+            action_plan[key] = _localize_common_text(action_plan[key], language)
+
+    for key in list_keys:
+        if isinstance(action_plan.get(key), list):
+            action_plan[key] = [_localize_common_text(item, language) for item in action_plan[key]]
+
+    return action_plan
 
 
 _UNSAFE_PATTERNS = [
@@ -781,6 +915,7 @@ async def analyze_story(
     )
 
     action_plan = safety_verify(action_plan, language)
+    action_plan = _localize_common_action_plan_fragments(action_plan, language)
 
     return {
         "app_name": "GharDisha AI",

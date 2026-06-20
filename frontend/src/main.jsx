@@ -591,6 +591,13 @@ function formatSourceTopic(topic, language) {
       ta: 'பொறுப்பான AI மற்றும் மனித இறுதி முடிவு',
       mr: 'जबाबदार AI आणि मानवी अंतिम निर्णय',
     },
+    'Temporary shelter and verification safeguards': {
+      en: 'Temporary shelter and verification safeguards',
+      hi: 'अस्थायी आश्रय और सत्यापन सुरक्षा',
+      as: 'সাময়িক আশ্ৰয় আৰু যাচাই সুৰক্ষা',
+      ta: 'தற்காலிக தங்குமிடம் மற்றும் சரிபார்ப்பு பாதுகாப்பு',
+      mr: 'तात्पुरता आसरा आणि पडताळणी सुरक्षा',
+    },
   };
 
   return topics[topic]?.[language] || topic;
@@ -1059,8 +1066,125 @@ function formatFact(value, language) {
       mr: 'माहित नाही',
     },
   };
-  return map[str]?.[language] || str;
+  return map[str]?.[language] || displayText(str, language);
 }
+
+
+function normalizeDisplayText(value) {
+  return String(value || '').replace(/\s+/g, ' ').trim().toLowerCase();
+}
+
+const COMMON_DISPLAY_TRANSLATIONS = {
+  'Based on the information shared, this may be a PMAY-G navigation case. Final eligibility is not decided by this tool.': {
+    hi: 'दी गई जानकारी के आधार पर, यह PMAY-G से जुड़ा तैयारी मामला हो सकता है। अंतिम पात्रता यह टूल तय नहीं करता।',
+    as: 'দিয়া তথ্যৰ ভিত্তিত, এইটো PMAY-G সম্পৰ্কীয় প্রস্তুতিৰ ঘটনা হ’ব পাৰে। চূড়ান্ত যোগ্যতা এই সঁজুলিয়ে সিদ্ধান্ত নলয়।',
+    ta: 'பகிர்ந்த தகவல்களின் அடிப்படையில், இது PMAY-G வழிகாட்டல் தொடர்பான தயாரிப்பு வழக்காக இருக்கலாம். இறுதி தகுதியை இந்த கருவி தீர்மானிக்காது.',
+    mr: 'दिलेल्या माहितीनुसार, हा PMAY-G तयारीशी संबंधित मामला असू शकतो. अंतिम पात्रता हे साधन ठरवत नाही.',
+  },
+  'Final PMAY-G eligibility and approval remain with Gram Sabha, BDO, and official government verification. GharDisha AI only prepares the user for that process.': {
+    hi: 'PMAY-G की अंतिम पात्रता और मंजूरी Gram Sabha, BDO और सरकारी जांच के बाद ही तय होती है। GharDisha AI केवल परिवार को उस प्रक्रिया के लिए तैयार करता है।',
+    as: 'PMAY-G ৰ চূড়ান্ত যোগ্যতা আৰু অনুমোদন Gram Sabha, BDO আৰু চৰকাৰী পৰীক্ষাৰ ওপৰত নিৰ্ভৰ কৰে। GharDisha AI কেৱল পৰিয়ালক সেই প্ৰক্ৰিয়াৰ বাবে সাজু কৰে।',
+    ta: 'PMAY-G இன் இறுதி தகுதி மற்றும் ஒப்புதல் Gram Sabha, BDO மற்றும் அரசு சரிபார்ப்பின் மூலம் மட்டுமே முடிவு செய்யப்படும். GharDisha AI குடும்பத்தை அந்த செயல்முறைக்கு தயார்படுத்த மட்டுமே உதவுகிறது.',
+    mr: 'PMAY-G ची अंतिम पात्रता आणि मंजुरी Gram Sabha, BDO आणि सरकारी पडताळणीनंतरच ठरते. GharDisha AI फक्त कुटुंबाला त्या प्रक्रियेसाठी तयार करते.',
+  },
+  'Request a disaster/damage certificate from the Gram Panchayat.': {
+    hi: 'Gram Panchayat से आपदा/नुकसान का प्रमाणपत्र या लिखित पत्र मांगें।',
+    as: 'Gram Panchayat-ৰ পৰা দুৰ্যোগ/ক্ষতিৰ প্ৰমাণপত্ৰ বা লিখিত চিঠি বিচাৰক।',
+    ta: 'Gram Panchayat-இல் இருந்து பேரிடர்/சேதச் சான்று அல்லது எழுத்து கடிதம் கேளுங்கள்.',
+    mr: 'Gram Panchayat कडून आपत्ती/नुकसान प्रमाणपत्र किंवा लेखी पत्र मागा.',
+  },
+  'Ask the Gram Panchayat if your family is on the Awaas+/SECC list.': {
+    hi: 'Gram Panchayat से पूछें कि आपके परिवार का नाम Awaas+ / SECC सूची में है या नहीं।',
+    as: 'আপোনাৰ পৰিয়ালৰ নাম Awaas+ / SECC তালিকাত আছে নে নাই Gram Panchayat-ত সোধক।',
+    ta: 'உங்கள் குடும்பப் பெயர் Awaas+ / SECC பட்டியலில் உள்ளதா என்று Gram Panchayat-இல் கேளுங்கள்.',
+    mr: 'आपल्या कुटुंबाचे नाव Awaas+ / SECC यादीत आहे का ते Gram Panchayat कडे विचारा.',
+  },
+  'Inquire whether a fresh Awaas+ survey/updation is needed.': {
+    hi: 'नया Awaas+ सर्वे या अपडेट जरूरी है या नहीं, यह पूछें।',
+    as: 'নতুন Awaas+ survey বা update লাগে নেকি সোধক।',
+    ta: 'புதிய Awaas+ survey அல்லது update தேவைப்படுகிறதா என்று கேளுங்கள்.',
+    mr: 'नवीन Awaas+ survey किंवा update गरजेचे आहे का ते विचारा.',
+  },
+  'Prepare your Aadhaar card and ration card for verification.': {
+    hi: 'जांच के लिए Aadhaar card और ration card तैयार रखें।',
+    as: 'যাচাইৰ বাবে Aadhaar card আৰু ration card সাজু ৰাখক।',
+    ta: 'சரிபார்ப்பிற்காக Aadhaar card மற்றும் ration card தயாராக வைத்திருக்கவும்.',
+    mr: 'पडताळणीसाठी Aadhaar card आणि ration card तयार ठेवा.',
+  },
+  'Ask what proof is accepted if your land documents were lost.': {
+    hi: 'अगर जमीन के कागज खो गए हैं, तो कौन सा प्रमाण स्वीकार होगा — यह पूछें।',
+    as: 'মাটিৰ নথি হেৰাই গ’লে কোন প্ৰমাণ গ্ৰহণ কৰা হ’ব সোধক।',
+    ta: 'நில ஆவணங்கள் இழந்திருந்தால் எந்த சான்று ஏற்கப்படும் என்று கேளுங்கள்.',
+    mr: 'जमीन कागदपत्रे हरवली असल्यास कोणता पुरावा स्वीकारला जाईल ते विचारा.',
+  },
+  'What is the process to obtain a disaster/damage certificate?': {
+    hi: 'आपदा/नुकसान प्रमाणपत्र लेने की प्रक्रिया क्या है?',
+    as: 'দুৰ্যোগ/ক্ষতিৰ প্ৰমাণপত্ৰ লোৱাৰ প্ৰক্ৰিয়া কি?',
+    ta: 'பேரிடர்/சேதச் சான்று பெறும் நடைமுறை என்ன?',
+    mr: 'आपत्ती/नुकसान प्रमाणपत्र मिळवण्याची प्रक्रिया काय आहे?',
+  },
+  'Can you confirm if my family is listed on the Awaas+/SECC list?': {
+    hi: 'क्या आप पुष्टि कर सकते हैं कि मेरे परिवार का नाम Awaas+ / SECC सूची में है या नहीं?',
+    as: 'মোৰ পৰিয়ালৰ নাম Awaas+ / SECC তালিকাত আছে নে নাই নিশ্চিত কৰিব পাৰিবনে?',
+    ta: 'என் குடும்பம் Awaas+ / SECC பட்டியலில் உள்ளதா என்பதை உறுதிப்படுத்த முடியுமா?',
+    mr: 'माझ्या कुटुंबाचे नाव Awaas+ / SECC यादीत आहे का ते आपण पुष्टी करू शकता का?',
+  },
+  'What documents do I need to provide for verification?': {
+    hi: 'जांच के लिए मुझे कौन से दस्तावेज देने होंगे?',
+    as: 'যাচাইৰ বাবে মোক কি নথি দিব লাগিব?',
+    ta: 'சரிபார்ப்பிற்கு நான் எந்த ஆவணங்களை வழங்க வேண்டும்?',
+    mr: 'पडताळणीसाठी मला कोणती कागदपत्रे द्यावी लागतील?',
+  },
+  'disaster/damage certificate': {
+    hi: 'आपदा/नुकसान प्रमाणपत्र',
+    as: 'দুৰ্যোগ/ক্ষতিৰ প্ৰমাণপত্ৰ',
+    ta: 'பேரிடர்/சேதச் சான்று',
+    mr: 'आपत्ती/नुकसान प्रमाणपत्र',
+  },
+  'land documents': {
+    hi: 'जमीन के कागज',
+    as: 'মাটিৰ নথি',
+    ta: 'நில ஆவணங்கள்',
+    mr: 'जमीन कागदपत्रे',
+  },
+  'Awaas+/SECC status': {
+    hi: 'Awaas+ / SECC स्थिति',
+    as: 'Awaas+ / SECC অৱস্থা',
+    ta: 'Awaas+ / SECC நிலை',
+    mr: 'Awaas+ / SECC स्थिती',
+  },
+  'temporary shelter near school': {
+    hi: 'स्कूल के पास अस्थायी आश्रय',
+    as: 'বিদ্যালয়ৰ ওচৰত সাময়িক আশ্ৰয়',
+    ta: 'பள்ளி அருகே தற்காலிக தங்குமிடம்',
+    mr: 'शाळेजवळ तात्पुरता आसरा',
+  },
+  'temporary shelter at school': {
+    hi: 'स्कूल में अस्थायी आश्रय',
+    as: 'বিদ্যালয়ত সাময়িক আশ্ৰয়',
+    ta: 'பள்ளியில் தற்காலிக தங்குமிடம்',
+    mr: 'शाळेत तात्पुरता आसरा',
+  },
+};
+
+function displayText(value, language) {
+  const text = String(value || '').trim();
+  if (!text || language === 'en') return text;
+
+  let translated = text;
+  Object.entries(COMMON_DISPLAY_TRANSLATIONS).forEach(([english, languageMap]) => {
+    const replacement = languageMap?.[language];
+    if (!replacement) return;
+    if (translated === english) {
+      translated = replacement;
+    } else {
+      translated = translated.replaceAll(english, replacement);
+    }
+  });
+
+  return translated;
+}
+
 
 function CaseFact({ label, value, language }) {
   return (
@@ -1119,149 +1243,149 @@ function getDemoVisualCopy(language) {
       structured: 'संरचित',
       missingProof: 'प्रमाण की कमी',
       detected: 'पहचानी गई',
-      bdoTitle: 'ग्राम पंचायत / BDO',
+      bdoTitle: 'Gram Panchayat / BDO',
       bdoBody: 'अंतिम जांच इंसान के पास रहती है',
       visualSteps: [
         { title: 'आपदा की कहानी', body: 'आवाज़ / लिखित / फाइल' },
         { title: 'AI केस फाइल', body: 'तथ्य + कमी' },
-        { title: 'स्रोत जांच', body: 'PMAY-G corpus' },
+        { title: 'स्रोत जांच', body: 'PMAY-G स्रोत संग्रह' },
         { title: 'BDO योजना', body: 'मानवीय निर्णय' },
       ],
       journeyKicker: 'जज डेमो फ्लो',
       journeyTitle: '10 सेकंड में AI की उपयोगिता समझें',
       journeySteps: [
-        { title: 'बिखरी कहानी', body: 'आवाज़, लिखित बात या दस्तावेज़ साफ housing case में बदलता है।' },
+        { title: 'बिखरी कहानी', body: 'आवाज़, लिखित बात या दस्तावेज़ साफ आवास केस में बदलता है।' },
         { title: 'AI केस फाइल', body: 'सिस्टम तथ्य, अनिश्चितता, प्रमाण की कमी और अगला सवाल निकालता है।' },
-        { title: 'स्रोत जांच', body: 'मार्गदर्शन curated PMAY-G knowledge base पर आधारित रहता है।' },
-        { title: 'मानवीय handoff', body: 'परिवार को BDO-ready योजना मिलती है, अंतिम authority अधिकारियों के पास रहती है।' },
+        { title: 'स्रोत जांच', body: 'मार्गदर्शन क्यूरेटेड PMAY-G स्रोत संग्रह पर आधारित रहता है।' },
+        { title: 'मानवीय सौंपना', body: 'परिवार को BDO-तैयार योजना मिलती है, अंतिम अधिकार अधिकारियों के पास रहता है।' },
       ],
       ribbon: {
-        studentPrototype: { title: 'Student prototype', body: 'यह भारत सरकार की आधिकारिक सेवा नहीं है' },
-        sourceGrounded: { title: 'स्रोत-आधारित', body: 'Curated PMAY-G guidance का उपयोग, random claims नहीं' },
-        officialsDecide: { title: 'अधिकारी निर्णय लेते हैं', body: 'Gram Sabha / BDO अंतिम verification रखते हैं' },
+        studentPrototype: { title: 'छात्र प्रोटोटाइप', body: 'यह भारत सरकार की आधिकारिक सेवा नहीं है' },
+        sourceGrounded: { title: 'स्रोत-आधारित', body: 'क्यूरेटेड PMAY-G मार्गदर्शन का उपयोग, बेबुनियाद दावे नहीं' },
+        officialsDecide: { title: 'अधिकारी निर्णय लेते हैं', body: 'Gram Sabha / BDO अंतिम जांच अधिकार रखते हैं' },
       },
       proofPoints: ['बिखरी कहानी से केस फाइल', 'स्रोत-आधारित मार्गदर्शन', 'अंतिम निर्णय इंसान के पास'],
       capabilityCards: [
-        { title: 'RAG', body: 'PMAY-G source library' },
-        { title: 'आवाज़', body: 'trusted-helper input' },
-        { title: 'सुरक्षित', body: 'fake eligibility नहीं' },
+        { title: 'RAG', body: 'PMAY-G स्रोत लाइब्रेरी' },
+        { title: 'आवाज़', body: 'भरोसेमंद सहायक इनपुट' },
+        { title: 'सुरक्षित', body: 'झूठी पात्रता नहीं' },
       ],
       starterTitle: 'तेज़ डेमो चाहिए?',
-      starterBody: 'एक realistic starter चुनें, फिर trusted helper की तरह edit करें।',
+      starterBody: 'एक वास्तविक उदाहरण चुनें, फिर भरोसेमंद सहायक की तरह बदलें।',
     },
     as: {
       safePathTitle: 'PMAY-G লৈ সুৰক্ষিত পথ',
-      pathTag: 'কাহিনী → প্ৰমাণৰ gap → official visit plan',
+      pathTag: 'কাহিনী → প্ৰমাণৰ অভাৱ → official visit plan',
       ruralStory: 'গাঁও পৰিয়ালৰ কাহিনী',
-      caseFacts: 'Case facts',
+      caseFacts: 'কেছৰ তথ্য',
       structured: 'সাজু কৰা',
       missingProof: 'প্ৰমাণৰ অভাৱ',
       detected: 'ধৰা পৰিল',
       bdoTitle: 'Gram Panchayat / BDO',
-      bdoBody: 'চূড়ান্ত verification মানুহৰ হাতত থাকে',
+      bdoBody: 'চূড়ান্ত যাচাই মানুহৰ হাতত থাকে',
       visualSteps: [
-        { title: 'দুৰ্যোগৰ কাহিনী', body: 'voice / text / file' },
-        { title: 'AI case file', body: 'facts + gaps' },
-        { title: 'Source check', body: 'PMAY-G corpus' },
-        { title: 'BDO plan', body: 'human decision' },
+        { title: 'দুৰ্যোগৰ কাহিনী', body: 'আৱাজ / লেখা / ফাইল' },
+        { title: 'AI case file', body: 'তথ্য + অভাৱ' },
+        { title: 'উৎস যাচাই', body: 'PMAY-G উৎস সংগ্রহ' },
+        { title: 'BDO পৰিকল্পনা', body: 'মানৱ সিদ্ধান্ত' },
       ],
-      journeyKicker: 'জজ demo flow',
-      journeyTitle: '১০ ছেকেণ্ডত AI value বুজক',
+      journeyKicker: 'জজ ডেমো flow',
+      journeyTitle: '১০ ছেকেণ্ডত AI ৰ মূল্য বুজক',
       journeySteps: [
-        { title: 'অস্পষ্ট কাহিনী', body: 'Voice, text বা document এখন clear housing case-ত সলনি হয়।' },
-        { title: 'AI case file', body: 'System-এ facts, uncertainty, proof gaps আৰু next question উলিয়ায়।' },
-        { title: 'Source check', body: 'Guidance curated PMAY-G knowledge base-ত grounded থাকে।' },
-        { title: 'Human handoff', body: 'পৰিয়ালে BDO-ready plan পায় আৰু final authority official-ৰ হাতত থাকে।' },
+        { title: 'অস্পষ্ট কাহিনী', body: 'আৱাজ, লেখা বা নথি এখন স্পষ্ট housing case-ত সলনি হয়।' },
+        { title: 'AI case file', body: 'সিস্টেমে তথ্য, অনিশ্চয়তা, প্ৰমাণৰ অভাৱ আৰু পৰৱৰ্তী প্ৰশ্ন উলিয়ায়।' },
+        { title: 'উৎস যাচাই', body: 'মাৰ্গদৰ্শন কিউৰেটেড PMAY-G উৎস সংগ্রহৰ ওপৰত ভিত্তি কৰি থাকে।' },
+        { title: 'মানৱ handoff', body: 'পৰিয়ালে BDO-সাজু পৰিকল্পনা পায় আৰু চূড়ান্ত সিদ্ধান্ত official-ৰ হাতত থাকে।' },
       ],
       ribbon: {
-        studentPrototype: { title: 'Student prototype', body: 'এইটো ভাৰত চৰকাৰৰ আনুষ্ঠানিক সেৱা নহয়' },
-        sourceGrounded: { title: 'Source-grounded', body: 'Curated PMAY-G guidance ব্যৱহাৰ কৰে, random claims নহয়' },
-        officialsDecide: { title: 'Official-এ সিদ্ধান্ত লয়', body: 'Gram Sabha / BDO final verification ৰাখে' },
+        studentPrototype: { title: 'ছাত্ৰ prototype', body: 'এইটো ভাৰত চৰকাৰৰ আনুষ্ঠানিক সেৱা নহয়' },
+        sourceGrounded: { title: 'উৎস-ভিত্তিক', body: 'কিউৰেটেড PMAY-G মাৰ্গদৰ্শন ব্যৱহাৰ কৰে, ভিত্তিহীন claims নহয়' },
+        officialsDecide: { title: 'Official-এ সিদ্ধান্ত লয়', body: 'Gram Sabha / BDO চূড়ান্ত যাচাই ৰাখে' },
       },
-      proofPoints: ['কাহিনীৰ পৰা case file', 'Source-grounded guidance', 'মানুহৰ final decision'],
+      proofPoints: ['কাহিনীৰ পৰা case file', 'উৎস-ভিত্তিক মাৰ্গদৰ্শন', 'মানুহৰ final decision'],
       capabilityCards: [
-        { title: 'RAG', body: 'PMAY-G source library' },
-        { title: 'Voice', body: 'trusted-helper input' },
-        { title: 'Guarded', body: 'fake eligibility নহয়' },
+        { title: 'RAG', body: 'PMAY-G উৎস লাইব্ৰেৰী' },
+        { title: 'আৱাজ', body: 'বিশ্বাসযোগ্য সহায়কৰ ইনপুট' },
+        { title: 'সুৰক্ষিত', body: 'মিছা eligibility নহয়' },
       ],
       starterTitle: 'দ্ৰুত demo লাগে?',
-      starterBody: 'এটা realistic starter বাছক, তাৰ পিছত trusted helper-ৰ দৰে edit কৰক।',
+      starterBody: 'এটা বাস্তৱসম্মত উদাহৰণ বাছক, তাৰ পিছত trusted helper-ৰ দৰে edit কৰক।',
     },
     ta: {
       safePathTitle: 'PMAY-G-க்கு பாதுகாப்பான வழி',
-      pathTag: 'கதை → proof gaps → official visit plan',
+      pathTag: 'கதை → ஆதார குறைகள் → அதிகாரி சந்திப்பு திட்டம்',
       ruralStory: 'கிராம குடும்ப கதை',
-      caseFacts: 'Case facts',
+      caseFacts: 'கேஸ் தகவல்கள்',
       structured: 'சீரமைக்கப்பட்டது',
       missingProof: 'சான்று குறைவு',
       detected: 'கண்டறியப்பட்டது',
       bdoTitle: 'Gram Panchayat / BDO',
       bdoBody: 'இறுதி சரிபார்ப்பு மனிதர்களிடம் இருக்கும்',
       visualSteps: [
-        { title: 'பேரிடர் கதை', body: 'voice / text / file' },
-        { title: 'AI case file', body: 'facts + gaps' },
-        { title: 'Source check', body: 'PMAY-G corpus' },
-        { title: 'BDO plan', body: 'human decision' },
+        { title: 'பேரிடர் கதை', body: 'குரல் / எழுத்து / கோப்பு' },
+        { title: 'AI case file', body: 'தகவல்கள் + குறைகள்' },
+        { title: 'மூல சரிபார்ப்பு', body: 'PMAY-G மூலத் தொகுப்பு' },
+        { title: 'BDO திட்டம்', body: 'மனித முடிவு' },
       ],
       journeyKicker: 'ஜட்ஜ் demo flow',
       journeyTitle: '10 விநாடிகளில் AI மதிப்பை புரிந்துகொள்ளுங்கள்',
       journeySteps: [
-        { title: 'சீரற்ற கதை', body: 'Voice, text அல்லது document clear housing case ஆக மாறும்.' },
-        { title: 'AI case file', body: 'System facts, uncertainty, proof gaps, next question ஆகியவற்றை கண்டறியும்.' },
-        { title: 'Source check', body: 'Guidance curated PMAY-G knowledge base-இல் grounded இருக்கும்.' },
-        { title: 'Human handoff', body: 'குடும்பத்திற்கு BDO-ready plan கிடைக்கும்; final authority officials களிடம் இருக்கும்.' },
+        { title: 'சீரற்ற கதை', body: 'குரல், எழுத்து அல்லது ஆவணம் தெளிவான வீட்டு வழக்காக மாறும்.' },
+        { title: 'AI case file', body: 'சிஸ்டம் தகவல்கள், தெளிவின்மை, ஆதார குறைகள், அடுத்த கேள்வி ஆகியவற்றை கண்டறியும்.' },
+        { title: 'மூல சரிபார்ப்பு', body: 'வழிகாட்டல் க்யூரேட் செய்யப்பட்ட PMAY-G மூலத் தொகுப்பின் அடிப்படையில் இருக்கும்.' },
+        { title: 'மனித handoff', body: 'குடும்பத்திற்கு BDO-தயார் திட்டம் கிடைக்கும்; இறுதி அதிகாரம் அதிகாரிகளிடம் இருக்கும்.' },
       ],
       ribbon: {
-        studentPrototype: { title: 'Student prototype', body: 'இது இந்திய அரசின் அதிகாரப்பூர்வ சேவை அல்ல' },
-        sourceGrounded: { title: 'Source-grounded', body: 'Curated PMAY-G guidance பயன்படுத்தும், random claims அல்ல' },
-        officialsDecide: { title: 'அதிகாரிகள் முடிவு செய்கிறார்கள்', body: 'Gram Sabha / BDO final verification authority வைத்திருக்கிறார்கள்' },
+        studentPrototype: { title: 'மாணவர் prototype', body: 'இது இந்திய அரசின் அதிகாரப்பூர்வ சேவை அல்ல' },
+        sourceGrounded: { title: 'மூல-அடிப்படையிலானது', body: 'க்யூரேட் செய்யப்பட்ட PMAY-G வழிகாட்டலை பயன்படுத்தும்; ஆதாரமற்ற claims அல்ல' },
+        officialsDecide: { title: 'அதிகாரிகள் முடிவு செய்கிறார்கள்', body: 'Gram Sabha / BDO இறுதி சரிபார்ப்பு அதிகாரத்தை வைத்திருக்கிறார்கள்' },
       },
-      proofPoints: ['கதையிலிருந்து case file', 'Source-grounded guidance', 'இறுதி முடிவு மனிதர்களிடம்'],
+      proofPoints: ['கதையிலிருந்து case file', 'மூல-அடிப்படையிலான வழிகாட்டல்', 'இறுதி முடிவு மனிதர்களிடம்'],
       capabilityCards: [
-        { title: 'RAG', body: 'PMAY-G source library' },
-        { title: 'Voice', body: 'trusted-helper input' },
-        { title: 'Guarded', body: 'fake eligibility இல்லை' },
+        { title: 'RAG', body: 'PMAY-G மூல நூலகம்' },
+        { title: 'குரல்', body: 'நம்பகமான உதவியாளர் input' },
+        { title: 'பாதுகாப்பு', body: 'பொய்யான eligibility இல்லை' },
       ],
       starterTitle: 'வேகமான demo வேண்டுமா?',
-      starterBody: 'ஒரு realistic starter தேர்ந்தெடுத்து, trusted helper போல edit செய்யுங்கள்.',
+      starterBody: 'ஒரு உண்மையான உதாரணத்தை தேர்வு செய்து, trusted helper போல திருத்துங்கள்.',
     },
     mr: {
       safePathTitle: 'PMAY-G पर्यंत सुरक्षित मार्ग',
-      pathTag: 'गोष्ट → proof gaps → official visit plan',
+      pathTag: 'गोष्ट → पुराव्याच्या कमतरता → अधिकारी भेट योजना',
       ruralStory: 'ग्रामीण कुटुंबाची गोष्ट',
-      caseFacts: 'Case facts',
+      caseFacts: 'केस तथ्य',
       structured: 'सुव्यवस्थित',
       missingProof: 'पुराव्याची कमतरता',
       detected: 'ओळखली',
       bdoTitle: 'Gram Panchayat / BDO',
       bdoBody: 'अंतिम पडताळणी मानवी अधिकाऱ्यांकडे राहते',
       visualSteps: [
-        { title: 'आपत्तीची गोष्ट', body: 'voice / text / file' },
-        { title: 'AI case file', body: 'facts + gaps' },
-        { title: 'Source check', body: 'PMAY-G corpus' },
-        { title: 'BDO plan', body: 'human decision' },
+        { title: 'आपत्तीची गोष्ट', body: 'आवाज / मजकूर / फाइल' },
+        { title: 'AI case file', body: 'तथ्य + कमतरता' },
+        { title: 'स्रोत तपासणी', body: 'PMAY-G स्रोत संग्रह' },
+        { title: 'BDO योजना', body: 'मानवी निर्णय' },
       ],
       journeyKicker: 'जज demo flow',
-      journeyTitle: '10 सेकंदात AI value समजून घ्या',
+      journeyTitle: '10 सेकंदात AI ची किंमत समजून घ्या',
       journeySteps: [
-        { title: 'गोंधळलेली गोष्ट', body: 'Voice, text किंवा document clear housing case मध्ये बदलते.' },
-        { title: 'AI case file', body: 'System facts, uncertainty, proof gaps आणि next question शोधते.' },
-        { title: 'Source check', body: 'Guidance curated PMAY-G knowledge base वर grounded राहते.' },
-        { title: 'Human handoff', body: 'कुटुंबाला BDO-ready plan मिळतो आणि final authority officials कडे राहते.' },
+        { title: 'गोंधळलेली गोष्ट', body: 'आवाज, मजकूर किंवा कागदपत्र स्पष्ट घरकुल प्रकरणात बदलते.' },
+        { title: 'AI case file', body: 'सिस्टम तथ्य, अनिश्चितता, पुराव्याच्या कमतरता आणि पुढचा प्रश्न शोधते.' },
+        { title: 'स्रोत तपासणी', body: 'मार्गदर्शन क्युरेटेड PMAY-G स्रोत संग्रहावर आधारित राहते.' },
+        { title: 'मानवी handoff', body: 'कुटुंबाला BDO-तयार योजना मिळते आणि अंतिम अधिकार अधिकाऱ्यांकडे राहतो.' },
       ],
       ribbon: {
-        studentPrototype: { title: 'Student prototype', body: 'ही भारत सरकारची अधिकृत सेवा नाही' },
-        sourceGrounded: { title: 'Source-grounded', body: 'Curated PMAY-G guidance वापरते, random claims नाही' },
-        officialsDecide: { title: 'अधिकारी निर्णय घेतात', body: 'Gram Sabha / BDO final verification authority ठेवतात' },
+        studentPrototype: { title: 'विद्यार्थी prototype', body: 'ही भारत सरकारची अधिकृत सेवा नाही' },
+        sourceGrounded: { title: 'स्रोत-आधारित', body: 'क्युरेटेड PMAY-G मार्गदर्शन वापरते, आधार नसलेले claims नाहीत' },
+        officialsDecide: { title: 'अधिकारी निर्णय घेतात', body: 'Gram Sabha / BDO अंतिम पडताळणी अधिकार ठेवतात' },
       },
-      proofPoints: ['गोष्ट ते case file', 'Source-grounded guidance', 'मानवी अंतिम निर्णय'],
+      proofPoints: ['गोष्ट ते case file', 'स्रोत-आधारित मार्गदर्शन', 'मानवी अंतिम निर्णय'],
       capabilityCards: [
-        { title: 'RAG', body: 'PMAY-G source library' },
-        { title: 'Voice', body: 'trusted-helper input' },
-        { title: 'Guarded', body: 'fake eligibility नाही' },
+        { title: 'RAG', body: 'PMAY-G स्रोत लाइब्रेरी' },
+        { title: 'आवाज', body: 'विश्वासू मदतनीस input' },
+        { title: 'सुरक्षित', body: 'खोटी eligibility नाही' },
       ],
       starterTitle: 'जलद demo हवा आहे?',
-      starterBody: 'एक realistic starter निवडा, मग trusted helper सारखे edit करा.',
+      starterBody: 'एक वास्तववादी उदाहरण निवडा, मग trusted helper सारखे edit करा.',
     },
   };
   return copy[language] || copy.en;
@@ -1431,6 +1555,25 @@ function App() {
 
   const caseFacts = useMemo(() => result?.case_json?.case_facts || {}, [result]);
   const action = result?.action_plan;
+  const displayAction = useMemo(() => {
+    if (!action) return null;
+    return {
+      ...action,
+      status: displayText(action.status, language),
+      plain_language_summary: displayText(action.plain_language_summary, language),
+      biggest_obstacle: displayText(action.biggest_obstacle, language),
+      next_best_question: displayText(action.next_best_question, language),
+      human_in_loop: displayText(action.human_in_loop, language),
+      missing_or_uncertain_items: (action.missing_or_uncertain_items || []).map((item) => displayText(item, language)),
+      next_48_hours: (action.next_48_hours || []).map((item) => displayText(item, language)),
+      questions_for_bdo_or_panchayat: (action.questions_for_bdo_or_panchayat || []).map((item) => displayText(item, language)),
+    };
+  }, [action, language]);
+  const summaryTextIsDuplicate = Boolean(
+    displayAction?.status &&
+    displayAction?.plain_language_summary &&
+    normalizeDisplayText(displayAction.status) === normalizeDisplayText(displayAction.plain_language_summary)
+  );
   const decisionSupport = supportCopy(language);
   const storyStarters = useMemo(() => getStoryStarters(language), [language]);
   const visualUi = getDemoVisualCopy(language);
@@ -1913,7 +2056,7 @@ function App() {
         {err && <div className="error-card">{err}</div>}
       </GlassCard>
 
-      {result && action && (
+      {result && displayAction && (
         <section id="result-panel" className="results animate-in">
           <div className="result-heading">
             <div>
@@ -1947,7 +2090,7 @@ function App() {
 
             <GlassCard className="highlight-card">
               <h3>{t('biggestObstacle')}</h3>
-              <p className="big-text">{action.biggest_obstacle}</p>
+              <p className="big-text">{displayAction.biggest_obstacle}</p>
 
               <div className="followup-box">
                 {caseUpdatedWithFollowUp && !followUpInputOpen ? (
@@ -1971,7 +2114,7 @@ function App() {
                         {action.next_best_question && (
                           <div className="remaining-question">
                             <small>{decisionSupport.nextRemainingQuestion}</small>
-                            <p>{action.next_best_question}</p>
+                            <p>{displayAction.next_best_question}</p>
                           </div>
                         )}
                         {canAskAnotherFollowUp && (
@@ -1992,7 +2135,7 @@ function App() {
                 ) : (
                   <>
                     <small>{caseUpdatedWithFollowUp ? decisionSupport.nextRemainingQuestion : decisionSupport.familyQuestionTitle}</small>
-                    <p className="followup-question">{action.next_best_question}</p>
+                    <p className="followup-question">{displayAction.next_best_question}</p>
 
                     <label className="followup-label">
                       {decisionSupport.answerQuestionLabel}
@@ -2028,12 +2171,12 @@ function App() {
 
             <GlassCard>
               <h3>{t('actionPlan')}</h3>
-              <ol className="clean-list">{(action.next_48_hours || []).map((x, i) => <li key={i}>{x}</li>)}</ol>
+              <ol className="clean-list">{(displayAction.next_48_hours || []).map((x, i) => <li key={i}>{x}</li>)}</ol>
             </GlassCard>
 
             <GlassCard>
               <h3>{t('bdoQuestions')}</h3>
-              <ol className="clean-list">{(action.questions_for_bdo_or_panchayat || []).map((x, i) => <li key={i}>{x}</li>)}</ol>
+              <ol className="clean-list">{(displayAction.questions_for_bdo_or_panchayat || []).map((x, i) => <li key={i}>{x}</li>)}</ol>
             </GlassCard>
           </div>
 
@@ -2078,18 +2221,18 @@ function App() {
 
           <GlassCard className="summary-card printable">
             <h3>{t('summaryTitle')}</h3>
-            <p className="status-line">{action.status}</p>
-            <p>{action.plain_language_summary}</p>
+            <p className="status-line">{displayAction.status}</p>
+            {!summaryTextIsDuplicate && <p>{displayAction.plain_language_summary}</p>}
             <h4>{t('missingItems')}</h4>
-            <ul>{(action.missing_or_uncertain_items || []).map((x) => <li key={x}>{x}</li>)}</ul>
+            <ul>{(displayAction.missing_or_uncertain_items || []).map((x) => <li key={x}>{x}</li>)}</ul>
             <h4>{t('raiBoundary')}</h4>
-            <p>{action.human_in_loop}</p>
+            <p>{displayAction.human_in_loop}</p>
           </GlassCard>
 
           <GlassCard className="sources-card">
             <h3>{t('sourcesTitle')}</h3>
             <div className="source-grid">
-              {(action.sources_used || []).map((s) => (
+              {(displayAction.sources_used || []).map((s) => (
                 <div className="source-card" key={s.id || `${s.topic}-${s.source}`}>
                   <strong>{formatSourceTopic(s.topic, language)}</strong>
                   <span>{formatOfficialSourceLabel(language)}: {s.source}</span>
