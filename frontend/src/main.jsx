@@ -61,6 +61,9 @@ const FLOW_COPY = {
     "splashPitch": "A trusted-helper-assisted AI case interpreter for disaster-displaced rural families.",
     "splashCta": "Begin guided setup",
     "notOfficial": "Not an official Government of India service",
+    "metricLanguages": "languages",
+    "metricFollowups": "follow-up limit",
+    "metricClaims": "approval claims",
     "languageTitle": "Which language should we use?",
     "languageSubtitle": "Choose the language that feels most comfortable for the family or helper.",
     "voiceText": "Voice + text",
@@ -113,9 +116,12 @@ const FLOW_COPY = {
   "hi": {
     "splashKicker": "छात्रों द्वारा बनाया गया PMAY-G सहायता प्रोटोटाइप",
     "splashTitle": "GharDisha AI",
-    "splashPitch": "बाढ़ से प्रभावित ग्रामीण परिवारों के लिए भरोसेमंद सहायक के साथ चलने वाला AI मार्गदर्शक।",
+    "splashPitch": "आपदा से प्रभावित ग्रामीण परिवारों के लिए भरोसेमंद सहायक के साथ चलने वाला AI मार्गदर्शक।",
     "splashCta": "आसान मार्गदर्शन शुरू करें",
     "notOfficial": "यह भारत सरकार की आधिकारिक सेवा नहीं है",
+    "metricLanguages": "भाषाएँ",
+    "metricFollowups": "अनुवर्ती सीमा",
+    "metricClaims": "मंजूरी दावे",
     "languageTitle": "आप कौन सी भाषा इस्तेमाल करना चाहते हैं?",
     "languageSubtitle": "परिवार या मदद करने वाले व्यक्ति के लिए जो भाषा आसान हो, वही चुनें।",
     "voiceText": "आवाज़ + लिखित",
@@ -166,11 +172,14 @@ const FLOW_COPY = {
     ]
   },
   "as": {
-    "splashKicker": "ছাত্ৰ-নিৰ্মিত PMAY-G সহায়ক prototype",
+    "splashKicker": "ছাত্ৰ-নিৰ্মিত PMAY-G সহায়ক প্ৰোটোটাইপ",
     "splashTitle": "GharDisha AI",
-    "splashPitch": "বানপানীত ক্ষতিগ্ৰস্ত গাঁওৰ পৰিয়ালৰ বাবে বিশ্বাসযোগ্য সহায়কৰ সৈতে ব্যৱহাৰ কৰিব পৰা AI guide.",
+    "splashPitch": "দুৰ্যোগত ক্ষতিগ্ৰস্ত গাঁওৰ পৰিয়ালৰ বাবে বিশ্বাসযোগ্য সহায়কৰ সৈতে ব্যৱহাৰ কৰিব পৰা AI মাৰ্গদৰ্শক।",
     "splashCta": "সহজ guide আৰম্ভ কৰক",
     "notOfficial": "এইটো ভাৰত চৰকাৰৰ আনুষ্ঠানিক সেৱা নহয়",
+    "metricLanguages": "ভাষা",
+    "metricFollowups": "অনুবৰ্তী সীমা",
+    "metricClaims": "অনুমোদনৰ দাবী",
     "languageTitle": "আপুনি কোন ভাষা ব্যৱহাৰ কৰিব বিচাৰে?",
     "languageSubtitle": "পৰিয়াল বা সহায়কৰ বাবে যিটো ভাষা সহজ, সেইটো বাছক।",
     "voiceText": "আৱাজ + লেখা",
@@ -178,14 +187,14 @@ const FLOW_COPY = {
     "continue": "আগলৈ",
     "back": "পিছলৈ",
     "nameTitle": "ইয়াক সহজ কৰি লওঁ",
-    "nameSubtitle": "আপোনাৰ নাম কেৱল summary সহজে পঢ়িবলৈ ব্যৱহাৰ কৰা হয়। কোনো account বনাব নালাগে।",
+    "nameSubtitle": "আপোনাৰ নাম কেৱল সাৰাংশ সহজে পঢ়িবলৈ ব্যৱহাৰ কৰা হয়। কোনো একাউণ্ট বনাব নালাগে।",
     "nameLabel": "আপোনাক আমি কি নামেৰে মাতিম?",
     "namePlaceholder": "উদাহৰণ: Priya",
     "roleLabel": "আজ GharDisha কোনে ব্যৱহাৰ কৰিছে?",
     "roleFamily": "মই পৰিয়ালৰ সদস্য",
     "roleHelper": "মই এটা পৰিয়ালক সহায় কৰি আছোঁ",
     "rolePanchayat": "পঞ্চায়ত / গাঁও প্ৰতিনিধি",
-    "roleNgo": "সহায় সংস্থা / relief worker",
+    "roleNgo": "সহায় সংস্থা / ৰিলিফ কৰ্মী",
     "guideTitle": "GharDisha-ত কিয় বিশ্বাস কৰিব পাৰি",
     "guideSubtitle": "তথ্য লোৱাৰ আগতে ই স্পষ্টকৈ বুজায় — ই কি কৰে আৰু কি নকৰে।",
     "startCase": "মামলা বুজা আৰম্ভ কৰক",
@@ -210,22 +219,25 @@ const FLOW_COPY = {
       },
       {
         "title": "4. চূড়ান্ত সিদ্ধান্ত official-এ লয়",
-        "body": "GharDisha পৰিয়ালক Gram Sabha / BDO verification-ৰ বাবে সাজু কৰে। ই approval নিদিয়ে।"
+        "body": "GharDisha পৰিয়ালক Gram Sabha / BDO যাচাইৰ বাবে সাজু কৰে। ই অনুমোদন নিদিয়ে।"
       }
     ],
     "trustPoints": [
       "PMAY-G ৰ আনুষ্ঠানিক তথ্য ব্যৱহাৰ কৰে",
-      "ই “আপুনি যোগ্য” নকয়; ই official verification ৰ কথা কয়",
+      "ই “আপুনি যোগ্য” নকয়; ই চৰকাৰী যাচাইৰ কথা কয়",
       "পঞ্চায়ত সহায়ক, সহায় সংস্থা বা relief worker-ৰ সৈতে ব্যৱহাৰ কৰিব পাৰি",
-      "চূড়ান্ত সিদ্ধান্ত Gram Sabha আৰু BDO official-ৰ হাতত থাকে"
+      "চূড়ান্ত সিদ্ধান্ত Gram Sabha আৰু BDO বিষয়াৰ হাতত থাকে"
     ]
   },
   "ta": {
-    "splashKicker": "மாணவர்கள் உருவாக்கிய PMAY-G வழிகாட்டி prototype",
+    "splashKicker": "மாணவர்கள் உருவாக்கிய PMAY-G வழிகாட்டி முன்மாதிரி",
     "splashTitle": "GharDisha AI",
-    "splashPitch": "வெள்ளத்தால் பாதிக்கப்பட்ட கிராம குடும்பங்களுக்கு நம்பகமான உதவியாளருடன் பயன்படுத்தும் AI வழிகாட்டி.",
+    "splashPitch": "பேரிடரால் பாதிக்கப்பட்ட கிராம குடும்பங்களுக்கு நம்பகமான உதவியாளருடன் பயன்படுத்தும் AI வழிகாட்டி.",
     "splashCta": "எளிய வழிகாட்டலை தொடங்குங்கள்",
     "notOfficial": "இது இந்திய அரசின் அதிகாரப்பூர்வ சேவை அல்ல",
+    "metricLanguages": "மொழிகள்",
+    "metricFollowups": "அனுவற்றி வரம்பு",
+    "metricClaims": "ஒப்புதல் கோரிக்கைகள்",
     "languageTitle": "எந்த மொழியை பயன்படுத்தலாம்?",
     "languageSubtitle": "குடும்பத்திற்கோ உதவியாளருக்கோ எது எளிதோ அந்த மொழியை தேர்வு செய்யுங்கள்.",
     "voiceText": "குரல் + எழுத்து",
@@ -265,7 +277,7 @@ const FLOW_COPY = {
       },
       {
         "title": "4. இறுதி முடிவு அதிகாரிகளிடமே இருக்கும்",
-        "body": "GharDisha குடும்பத்தை Gram Sabha / BDO சரிபார்ப்பிற்கு தயார் செய்கிறது. இது approval கொடுக்காது."
+        "body": "GharDisha குடும்பத்தை Gram Sabha / BDO சரிபார்ப்பிற்கு தயார் செய்கிறது. இது ஒப்புதல் கொடுக்காது."
       }
     ],
     "trustPoints": [
@@ -276,11 +288,14 @@ const FLOW_COPY = {
     ]
   },
   "mr": {
-    "splashKicker": "विद्यार्थ्यांनी बनवलेला PMAY-G मदत prototype",
+    "splashKicker": "विद्यार्थ्यांनी बनवलेला PMAY-G मदत प्रोटोटाइप",
     "splashTitle": "GharDisha AI",
-    "splashPitch": "पूरामुळे प्रभावित ग्रामीण कुटुंबांसाठी विश्वासू मदतनीसासोबत वापरता येणारा AI मार्गदर्शक.",
+    "splashPitch": "आपत्तीमुळे प्रभावित ग्रामीण कुटुंबांसाठी विश्वासू मदतनीसासोबत वापरता येणारा AI मार्गदर्शक.",
     "splashCta": "सोपा मार्गदर्शक सुरू करा",
     "notOfficial": "ही भारत सरकारची अधिकृत सेवा नाही",
+    "metricLanguages": "भाषा",
+    "metricFollowups": "अनुवर्ती मर्यादा",
+    "metricClaims": "मंजुरी दावे",
     "languageTitle": "आपण कोणती भाषा वापरू?",
     "languageSubtitle": "कुटुंबाला किंवा मदतनीसाला जी भाषा सोपी वाटते ती निवडा.",
     "voiceText": "आवाज + मजकूर",
@@ -320,7 +335,7 @@ const FLOW_COPY = {
       },
       {
         "title": "4. अंतिम निर्णय अधिकारी घेतात",
-        "body": "GharDisha कुटुंबाला Gram Sabha / BDO पडताळणीसाठी तयार करते. हे approval देत नाही."
+        "body": "GharDisha कुटुंबाला Gram Sabha / BDO पडताळणीसाठी तयार करते. हे मंजुरी देत नाही."
       }
     ],
     "trustPoints": [
@@ -335,13 +350,15 @@ const FLOW_COPY = {
 const EXTRA_UI = {
   en: {
     langNote: 'Voice input supports English, Hindi, Tamil, and Marathi. Assamese is available as written output.',
-    uploadLabel: 'Optional document/photo upload',
-    uploadHint: 'Upload disaster/damage certificate, Panchayat note, rejection letter, or text PDF if available.',
+    uploadLabel: 'Optional but recommended document/photo upload',
+    uploadHint: 'Add a document/photo if available. GharDisha only checks what it appears to be; officials confirm it.',
     chooseFile: 'Choose file',
     noFile: 'No file selected',
     storyPlaceholder: 'Example: Our house in Majuli, Assam was damaged in a flood.\nWe are staying with relatives near Jorhat.\nWe have Aadhaar and ration card, but no land papers.\nWe do not know if our family is on the Awaas+ or SECC list.',
   },
   as: {
+    uploadLabel: 'ঐচ্ছিক কিন্তু ভাল: নথি / ফটো যোগ কৰক',
+    uploadHint: 'থাকিলে নথি/ফটো যোগ কৰক। GharDisha কেৱল এইটো কি যেন লাগে ক’ব; চূড়ান্ত নিশ্চিতকৰণ বিষয়া কৰিব।',
     chooseFile: 'ফাইল বাছক',
     noFile: 'কোনো ফাইল বাছনি কৰা নাই',
   },
@@ -379,8 +396,8 @@ const EXTRA_UI = {
     "stop": "रोकें",
     "familyStory": "परिवार की कहानी",
     "storyPlaceholder": "उदाहरण: असम में हमारा घर बाढ़ में बह गया। हम रिश्तेदारों के यहाँ रह रहे हैं। हमारे पास आधार और राशन कार्ड है, लेकिन जमीन के कागज नहीं हैं।",
-    "uploadLabel": "दस्तावेज / फोटो जोड़ें",
-    "uploadHint": "अगर हो तो आपदा/नुकसान प्रमाणपत्र, पंचायत पत्र, rejection letter या PDF जोड़ें।",
+    "uploadLabel": "वैकल्पिक लेकिन बेहतर: दस्तावेज / फोटो जोड़ें",
+    "uploadHint": "अगर उपलब्ध हो तो दस्तावेज/फोटो जोड़ें। GharDisha केवल यह बताता है कि यह क्या लगता है; अंतिम पुष्टि अधिकारी करेंगे।",
     "chooseFile": "फाइल चुनें",
     "noFile": "कोई फाइल नहीं चुनी गई",
     "footerSafety": "सुरक्षित लाइव मोड: जवाब AI/ML API से आता है और अंतिम निर्णय अधिकारी पर छोड़ता है।",
@@ -445,8 +462,8 @@ const EXTRA_UI = {
     "stop": "நிறுத்துங்கள்",
     "familyStory": "குடும்பத்தின் கதை",
     "storyPlaceholder": "உதாரணம்: அசாமில் எங்கள் வீடு வெள்ளத்தில் அடித்துச் சென்றது. நாங்கள் உறவினர்களிடம் தங்கியிருக்கிறோம். Aadhaar மற்றும் ration card இருக்கிறது, ஆனால் நில ஆவணங்கள் இல்லை.",
-    "uploadLabel": "ஆவணம் / புகைப்படம் சேர்க்கவும்",
-    "uploadHint": "பேரிடர்/சேதச் சான்று, பஞ்சாயத்து கடிதம், rejection letter அல்லது PDF இருந்தால் upload செய்யவும்.",
+    "uploadLabel": "விருப்பமானது, ஆனால் நல்லது: ஆவணம் / புகைப்படம் சேர்க்கவும்",
+    "uploadHint": "இருந்தால் ஆவணம்/புகைப்படம் சேர்க்கவும். GharDisha அது என்ன போல தெரிகிறது என்பதை மட்டும் சொலும்; அதிகாரிகள் உறுதிப்படுத்துவார்கள்.",
     "chooseFile": "கோப்பை தேர்வு செய்யவும்",
     "noFile": "கோப்பு தேர்வு செய்யவில்லை",
     "footerSafety": "பாதுகாப்பான live mode: பதில் AI/ML API மூலம் வரும்; இறுதி முடிவு அதிகாரிகளிடம் இருக்கும்.",
@@ -511,8 +528,8 @@ const EXTRA_UI = {
     "stop": "थांबा",
     "familyStory": "कुटुंबाची गोष्ट",
     "storyPlaceholder": "उदाहरण: असममध्ये आमचे घर पुरात वाहून गेले. आम्ही नातेवाईकांकडे राहतो. Aadhaar आणि ration card आहे, पण जमीन कागदपत्रे नाहीत.",
-    "uploadLabel": "कागदपत्र / फोटो जोडा",
-    "uploadHint": "आपत्ती/नुकसान प्रमाणपत्र, पंचायत पत्र, rejection letter किंवा PDF असेल तर upload करा.",
+    "uploadLabel": "ऐच्छिक पण चांगले: कागदपत्र / फोटो जोडा",
+    "uploadHint": "असेल तर कागदपत्र/फोटो जोडा. GharDisha फक्त ते काय दिसते ते सांगते; अंतिम पुष्टी अधिकारी करतील.",
     "chooseFile": "फाइल निवडा",
     "noFile": "फाइल निवडलेली नाही",
     "footerSafety": "सुरक्षित live mode: उत्तर AI/ML API मधून येते; अंतिम निर्णय अधिकाऱ्यांकडे राहतो.",
@@ -682,16 +699,16 @@ function supportCopy(language) {
       updateCaseBtn: 'इस जवाब से केस अपडेट करें',
       updatingCaseBtn: 'केस अपडेट हो रहा है...',
       caseUpdatedTitle: 'आपके जवाब से केस अपडेट हो गया',
-      caseUpdatedBody: 'आपका जवाब केस में जोड़ दिया गया है। अब अगले कदम के लिए नीचे दी गई योजना और BDO / पंचायत वाले सवाल देखें।',
+      caseUpdatedBody: 'आपका जवाब केस में जोड़ दिया गया है। अब अगले कदम के लिए नीचे दी गई कार्य योजना और BDO / पंचायत वाले सवाल देखें।',
       nextRemainingQuestion: 'अगला बचा हुआ सवाल',
       answerNextQuestionBtn: 'इस अगले सवाल का जवाब दें',
       readinessTitle: 'BDO जाने की तैयारी',
       readinessSubtitle: 'यह सरकारी जाँच के लिए तैयारी दिखाता है। यह मंजूरी की भविष्यवाणी नहीं है।',
       initialReadinessTitle: 'शुरुआती BDO जाने की तैयारी',
-      initialReadinessSubtitle: 'यह केवल पहली कहानी के आधार पर है। इस स्कोर को अपडेट करने के लिए follow-up सवाल का जवाब दें।',
+      initialReadinessSubtitle: 'यह केवल पहली कहानी के आधार पर है। इस स्कोर को अपडेट करने के लिए अनुवर्ती सवाल का जवाब दें।',
       updatedReadinessTitle: 'अपडेटेड BDO जाने की तैयारी',
-      updatedReadinessSubtitle: 'परिवार / सहायक के missing सवाल का जवाब देने के बाद यह दोबारा निकाला गया है।',
-      temporaryShelterSafeguard: 'रिश्तेदारों के घर या shelter में अस्थायी रूप से रहना केवल वर्तमान रहने की स्थिति है, पात्रता का प्रमाण नहीं। परिवार के अपने घर की स्थिति Gram Sabha / BDO से verify होनी चाहिए।',
+      updatedReadinessSubtitle: 'परिवार / सहायक के अधूरे सवाल का जवाब देने के बाद यह दोबारा निकाला गया है।',
+      temporaryShelterSafeguard: 'रिश्तेदारों के घर या आश्रय में अस्थायी रूप से रहना केवल वर्तमान रहने की स्थिति है, पात्रता का प्रमाण नहीं। परिवार के अपने घर की स्थिति Gram Sabha / BDO से जांची जानी चाहिए।',
       pathwayFit: 'PMAY-G रास्ते से जुड़ाव',
       evidenceReadiness: 'प्रमाण / कागज की तैयारी',
       listingClarity: 'Awaas+ / SECC स्थिति की स्पष्टता',
@@ -701,57 +718,57 @@ function supportCopy(language) {
       readinessMedium: 'तैयारी चाहिए',
       readinessLow: 'और जानकारी चाहिए',
       readinessDisclaimer: 'यह स्कोर केवल Gram Panchayat / BDO जाँच के लिए तैयारी दिखाता है। यह पात्रता तय नहीं करता और मंजूरी की गारंटी नहीं देता।',
-      followUpLimitTitle: 'अधिकारी से मिलने के लिए case तैयार है',
-      followUpLimitBody: 'GharDisha ने इस चरण के लिए जरूरी follow-up जवाब ले लिए हैं। अब बाकी बातें, जैसे Awaas+/SECC list, damage certificate, जमीन/site verification और final approval, Gram Panchayat / BDO अधिकारी ही verify करेंगे।',
-      followUpCounter: 'दिए गए follow-up जवाब',
+      followUpLimitTitle: 'अधिकारी से मिलने के लिए केस तैयार है',
+      followUpLimitBody: 'GharDisha ने इस चरण के लिए जरूरी अनुवर्ती जवाब ले लिए हैं। अब बाकी बातें, जैसे Awaas+ / SECC सूची, नुकसान प्रमाणपत्र, जमीन/स्थान की जांच और अंतिम मंजूरी, Gram Panchayat / BDO अधिकारी ही जांचेंगे।',
+      followUpCounter: 'दिए गए अनुवर्ती जवाब',
     },
     as: {
       familyQuestionTitle: 'এতিয়া পৰিয়াল / সহায়কৰ পৰা সোধা প্ৰশ্ন',
       answerQuestionLabel: 'এই প্ৰশ্নৰ উত্তৰ লিখক',
       answerQuestionPlaceholder: 'উদাহৰণ: হয়, পঞ্চায়তে কালি ক্ষতিৰ এখন চিঠি দিছিল।',
-      updateCaseBtn: 'এই উত্তৰে case update কৰক',
-      updatingCaseBtn: 'case update কৰি আছে...',
-      caseUpdatedTitle: 'আপোনাৰ উত্তৰে case update হ’ল',
-      caseUpdatedBody: 'আপোনাৰ উত্তৰ case-ত যোগ কৰা হৈছে। এতিয়া পৰৱৰ্তী পদক্ষেপৰ বাবে তলৰ action plan আৰু BDO / Panchayat প্ৰশ্নসমূহ চাওক।',
+      updateCaseBtn: 'এই উত্তৰে কেছ আপডেট কৰক',
+      updatingCaseBtn: 'কেছ আপডেট কৰি আছে...',
+      caseUpdatedTitle: 'আপোনাৰ উত্তৰে কেছ আপডেট হ’ল',
+      caseUpdatedBody: 'আপোনাৰ উত্তৰ কেছত যোগ কৰা হৈছে। এতিয়া পৰৱৰ্তী পদক্ষেপৰ বাবে তলৰ কাৰ্য পৰিকল্পনা আৰু BDO / Panchayat প্ৰশ্নসমূহ চাওক।',
       nextRemainingQuestion: 'পৰৱৰ্তী বাকী থকা প্ৰশ্ন',
       answerNextQuestionBtn: 'এই পৰৱৰ্তী প্ৰশ্নৰ উত্তৰ দিয়ক',
       readinessTitle: 'BDO লৈ যোৱাৰ প্ৰস্তুতি',
-      readinessSubtitle: 'এই meter-এ চৰকাৰী পৰীক্ষাৰ বাবে প্ৰস্তুতি দেখুৱায়। ই approval prediction নহয়।',
+      readinessSubtitle: 'এই মিটাৰে চৰকাৰী পৰীক্ষাৰ বাবে প্ৰস্তুতি দেখুৱায়। ই অনুমোদনৰ পূৰ্বানুমান নহয়।',
       initialReadinessTitle: 'আৰম্ভণিৰ BDO প্ৰস্তুতি',
-      initialReadinessSubtitle: 'এইটো কেৱল প্ৰথম কাহিনীৰ ভিত্তিত। score update কৰিবলৈ follow-up প্ৰশ্নৰ উত্তৰ দিয়ক।',
-      updatedReadinessTitle: 'Update কৰা BDO প্ৰস্তুতি',
-      updatedReadinessSubtitle: 'পৰিয়াল / সহায়কে missing প্ৰশ্নৰ উত্তৰ দিয়াৰ পিছত এইটো পুনৰ গণনা কৰা হৈছে।',
-      temporaryShelterSafeguard: 'আত্মীয়ৰ ঘৰত বা shelter-ত সাময়িকভাৱে থকা মানে কেৱল বৰ্তমান আশ্ৰয়। ই যোগ্যতাৰ প্ৰমাণ নহয়। পৰিয়ালৰ নিজা ঘৰৰ অৱস্থা Gram Sabha / BDO-এ verify কৰিব লাগিব।',
+      initialReadinessSubtitle: 'এইটো কেৱল প্ৰথম কাহিনীৰ ভিত্তিত। স্ক’ৰ আপডেট কৰিবলৈ অনুবৰ্তী প্ৰশ্নৰ উত্তৰ দিয়ক।',
+      updatedReadinessTitle: 'আপডেট কৰা BDO প্ৰস্তুতি',
+      updatedReadinessSubtitle: 'পৰিয়াল / সহায়কে বাকী থকা প্ৰশ্নৰ উত্তৰ দিয়াৰ পিছত এইটো পুনৰ গণনা কৰা হৈছে।',
+      temporaryShelterSafeguard: 'আত্মীয়ৰ ঘৰত বা আশ্ৰয়ত সাময়িকভাৱে থকা মানে কেৱল বৰ্তমান আশ্ৰয়। ই যোগ্যতাৰ প্ৰমাণ নহয়। পৰিয়ালৰ নিজা ঘৰৰ অৱস্থা Gram Sabha / BDO-এ যাচাই কৰিব লাগিব।',
       pathwayFit: 'PMAY-G পথৰ সৈতে মিল',
       evidenceReadiness: 'প্ৰমাণ / নথিৰ প্ৰস্তুতি',
       listingClarity: 'Awaas+ / SECC অৱস্থা স্পষ্টতা',
-      officialVisitReadiness: 'official-ৰ ওচৰলৈ যোৱাৰ প্ৰস্তুতি',
+      officialVisitReadiness: 'বিষয়াৰ ওচৰলৈ যোৱাৰ প্ৰস্তুতি',
       overallReadiness: 'মুঠ প্ৰস্তুতি',
       readinessStrong: 'ভাল',
       readinessMedium: 'আরো প্ৰস্তুতি লাগে',
       readinessLow: 'আরো তথ্য লাগে',
-      readinessDisclaimer: 'এই score-এ কেৱল Gram Panchayat / BDO পৰীক্ষাৰ বাবে প্ৰস্তুতি দেখুৱায়। ই যোগ্যতা ঠিক নকৰে আৰু approval guarantee নকৰে।',
-      followUpLimitTitle: 'official visit-ৰ বাবে case সাজু হৈছে',
-      followUpLimitBody: 'GharDisha-এ এই ধাপৰ বাবে মূল follow-up উত্তৰ লৈছে। এতিয়া বাকী বিষয়, যেনে Awaas+/SECC list, damage certificate, land/site verification আৰু final approval, Gram Panchayat / BDO official-এ verify কৰিব লাগিব।',
-      followUpCounter: 'দিয়া follow-up উত্তৰ',
+      readinessDisclaimer: 'এই স্ক’ৰে কেৱল Gram Panchayat / BDO পৰীক্ষাৰ বাবে প্ৰস্তুতি দেখুৱায়। ই যোগ্যতা ঠিক নকৰে আৰু অনুমোদনৰ নিশ্চয়তা নিদিয়ে।',
+      followUpLimitTitle: 'বিষয়াৰ ওচৰলৈ যোৱাৰ বাবে কেছ সাজু হৈছে',
+      followUpLimitBody: 'GharDisha-এ এই ধাপৰ বাবে মূল অনুবৰ্তী উত্তৰ লৈছে। এতিয়া বাকী বিষয়, যেনে Awaas+ / SECC তালিকা, ক্ষতিৰ প্ৰমাণপত্ৰ, মাটি/স্থান যাচাই আৰু চূড়ান্ত অনুমোদন, Gram Panchayat / BDO বিষয়াই যাচাই কৰিব লাগিব।',
+      followUpCounter: 'দিয়া অনুবৰ্তী উত্তৰ',
     },
     ta: {
       familyQuestionTitle: 'இப்போது குடும்பம் / உதவியாளரிடம் கேட்க வேண்டிய கேள்வி',
       answerQuestionLabel: 'இந்த கேள்விக்கான பதிலை எழுதுங்கள்',
       answerQuestionPlaceholder: 'உதாரணம்: ஆம், பஞ்சாயத்து நேற்று சேதம் குறித்த கடிதம் கொடுத்தது.',
-      updateCaseBtn: 'இந்த பதிலால் case-ஐ update செய்யுங்கள்',
-      updatingCaseBtn: 'case update ஆகிறது...',
-      caseUpdatedTitle: 'உங்கள் பதிலால் case update செய்யப்பட்டது',
-      caseUpdatedBody: 'உங்கள் பதில் case-ல் சேர்க்கப்பட்டது. அடுத்த படிக்காக கீழே உள்ள action plan மற்றும் BDO / Panchayat கேள்விகளைப் பாருங்கள்.',
+      updateCaseBtn: 'இந்த பதிலால் கேஸை புதுப்பியுங்கள்',
+      updatingCaseBtn: 'கேஸ் புதுப்பிக்கப்படுகிறது...',
+      caseUpdatedTitle: 'உங்கள் பதிலால் கேஸ் புதுப்பிக்கப்பட்டது',
+      caseUpdatedBody: 'உங்கள் பதில் கேஸில் சேர்க்கப்பட்டது. அடுத்த படிக்காக கீழே உள்ள செயல் திட்டம் மற்றும் BDO / Panchayat கேள்விகளைப் பாருங்கள்.',
       nextRemainingQuestion: 'மீதமுள்ள அடுத்த கேள்வி',
       answerNextQuestionBtn: 'இந்த அடுத்த கேள்விக்கு பதில் எழுதுங்கள்',
       readinessTitle: 'BDO செல்லும் தயார்நிலை',
-      readinessSubtitle: 'இது அரசு சரிபார்ப்பிற்கான தயார்நிலையை காட்டும். இது approval prediction அல்ல.',
+      readinessSubtitle: 'இது அரசு சரிபார்ப்பிற்கான தயார்நிலையை காட்டும். இது ஒப்புதல் கணிப்பு அல்ல.',
       initialReadinessTitle: 'ஆரம்ப BDO செல்லும் தயார்நிலை',
-      initialReadinessSubtitle: 'இது முதல் கதையின் அடிப்படையில் மட்டும். இந்த score-ஐ update செய்ய follow-up கேள்விக்கு பதில் எழுதுங்கள்.',
-      updatedReadinessTitle: 'Update செய்யப்பட்ட BDO செல்லும் தயார்நிலை',
-      updatedReadinessSubtitle: 'குடும்பம் / உதவியாளர் missing கேள்விக்கு பதில் அளித்த பிறகு இது மீண்டும் கணக்கிடப்பட்டது.',
-      temporaryShelterSafeguard: 'உறவினர் வீடு அல்லது shelter-ல் தற்காலிகமாக இருப்பது தற்போதைய தங்குமிடம் மட்டும்; அது தகுதி சான்று அல்ல. குடும்பத்தின் சொந்த வீட்டு நிலை Gram Sabha / BDO மூலம் verify செய்யப்பட வேண்டும்.',
+      initialReadinessSubtitle: 'இது முதல் கதையின் அடிப்படையில் மட்டும். இந்த மதிப்பெண்ணை புதுப்பிக்க அனுவर्ती கேள்விக்கு பதில் எழுதுங்கள்.',
+      updatedReadinessTitle: 'புதுப்பிக்கப்பட்ட BDO செல்லும் தயார்நிலை',
+      updatedReadinessSubtitle: 'குடുംബம் / உதவியாளர் மீதமுள்ள கேள்விக்கு பதில் அளித்த பிறகு இது மீண்டும் கணக்கிடப்பட்டது.',
+      temporaryShelterSafeguard: 'உறவினர் வீடு அல்லது தற்காலிக தங்குமிடத்தில் இருப்பது தற்போதைய தங்குமிடம் மட்டும்; அது தகுதி சான்று அல்ல. குடும்பத்தின் சொந்த வீட்டு நிலை Gram Sabha / BDO மூலம் சரிபார்க்கப்பட வேண்டும்.',
       pathwayFit: 'PMAY-G பாதையுடன் பொருந்தல்',
       evidenceReadiness: 'ஆதாரம் / ஆவண தயார்நிலை',
       listingClarity: 'Awaas+ / SECC நிலை தெளிவு',
@@ -760,28 +777,28 @@ function supportCopy(language) {
       readinessStrong: 'நன்று',
       readinessMedium: 'மேலும் தயாரிப்பு தேவை',
       readinessLow: 'மேலும் தகவல் தேவை',
-      readinessDisclaimer: 'இந்த score Gram Panchayat / BDO சரிபார்ப்பிற்கான தயார்நிலையை மட்டும் காட்டுகிறது. இது தகுதி முடிவு அல்லது approval guarantee அல்ல.',
-      followUpLimitTitle: 'அதிகாரி சந்திப்பிற்கு case தயாராக உள்ளது',
-      followUpLimitBody: 'இந்த கட்டத்திற்கு தேவையான முக்கிய follow-up பதில்களை GharDisha சேகரித்துள்ளது. மீதமுள்ளவை, Awaas+/SECC list, damage certificate, land/site verification மற்றும் final approval போன்றவை, Gram Panchayat / BDO அதிகாரிகளால் verify செய்யப்பட வேண்டும்.',
-      followUpCounter: 'கொடுக்கப்பட்ட follow-up பதில்கள்',
+      readinessDisclaimer: 'இந்த மதிப்பெண் Gram Panchayat / BDO சரிபார்ப்பிற்கான தயார்நிலையை மட்டும் காட்டுகிறது. இது தகுதி முடிவு அல்லது ஒப்புதல் உத்தரவாதம் அல்ல.',
+      followUpLimitTitle: 'அதிகாரி சந்திப்பிற்கு கேஸ் தயாராக உள்ளது',
+      followUpLimitBody: 'இந்த கட்டத்திற்கு தேவையான முக்கிய அனுவற்றி பதில்களை GharDisha சேகரித்துள்ளது. மீதமுள்ளவை, Awaas+ / SECC பட்டியல், சேதச் சான்று, நில/இட சரிபார்ப்பு மற்றும் இறுதி ஒப்புதல் போன்றவை, Gram Panchayat / BDO அதிகாரிகளால் சரிபார்க்கப்பட வேண்டும்.',
+      followUpCounter: 'கொடுக்கப்பட்ட அனுவற்றி பதில்கள்',
     },
     mr: {
       familyQuestionTitle: 'आता कुटुंब / मदतनीसाला विचारायचा प्रश्न',
       answerQuestionLabel: 'या प्रश्नाचे उत्तर लिहा',
       answerQuestionPlaceholder: 'उदाहरण: हो, पंचायतने काल नुकसानाचे पत्र दिले.',
-      updateCaseBtn: 'या उत्तराने case update करा',
-      updatingCaseBtn: 'case update होत आहे...',
-      caseUpdatedTitle: 'आपल्या उत्तराने case update झाला',
-      caseUpdatedBody: 'आपले उत्तर case मध्ये जोडले गेले आहे. पुढील पावलांसाठी खालील action plan आणि BDO / Panchayat प्रश्न पहा.',
+      updateCaseBtn: 'या उत्तराने केस अपडेट करा',
+      updatingCaseBtn: 'केस अपडेट होत आहे...',
+      caseUpdatedTitle: 'आपल्या उत्तराने केस अपडेट झाला',
+      caseUpdatedBody: 'आपले उत्तर केसमध्ये जोडले गेले आहे. पुढील पावलांसाठी खालील कृती योजना आणि BDO / Panchayat प्रश्न पहा.',
       nextRemainingQuestion: 'पुढचा उरलेला प्रश्न',
       answerNextQuestionBtn: 'या पुढच्या प्रश्नाचे उत्तर द्या',
       readinessTitle: 'BDO कडे जाण्याची तयारी',
-      readinessSubtitle: 'हे सरकारी पडताळणीसाठीची तयारी दाखवते. हे approval prediction नाही.',
+      readinessSubtitle: 'हे सरकारी पडताळणीसाठीची तयारी दाखवते. हे मंजुरीचा अंदाज नाही.',
       initialReadinessTitle: 'सुरुवातीची BDO तयारी',
-      initialReadinessSubtitle: 'हे फक्त पहिल्या गोष्टीवर आधारित आहे. हा score update करण्यासाठी follow-up प्रश्नाचे उत्तर द्या.',
+      initialReadinessSubtitle: 'हे फक्त पहिल्या गोष्टीवर आधारित आहे. हा स्कोअर अपडेट करण्यासाठी अनुवर्ती प्रश्नाचे उत्तर द्या.',
       updatedReadinessTitle: 'अपडेट केलेली BDO तयारी',
-      updatedReadinessSubtitle: 'कुटुंब / मदतनीसाने missing प्रश्नाचे उत्तर दिल्यानंतर हा score पुन्हा काढला आहे.',
-      temporaryShelterSafeguard: 'नातेवाईकांच्या घरी किंवा shelter मध्ये तात्पुरते राहणे ही फक्त सध्याची राहण्याची स्थिती आहे; ते पात्रतेचा पुरावा नाही. कुटुंबाच्या स्वतःच्या घराची स्थिती Gram Sabha / BDO कडून verify होणे गरजेचे आहे.',
+      updatedReadinessSubtitle: 'कुटुंब / मदतनीसाने उरलेल्या प्रश्नाचे उत्तर दिल्यानंतर हा स्कोअर पुन्हा काढला आहे.',
+      temporaryShelterSafeguard: 'नातेवाईकांच्या घरी किंवा तात्पुरत्या आसऱ्यात राहणे ही फक्त सध्याची राहण्याची स्थिती आहे; ते पात्रतेचा पुरावा नाही. कुटुंबाच्या स्वतःच्या घराची स्थिती Gram Sabha / BDO कडून पडताळणी होणे गरजेचे आहे.',
       pathwayFit: 'PMAY-G मार्गाशी जुळणारे',
       evidenceReadiness: 'पुरावा / कागदपत्र तयारी',
       listingClarity: 'Awaas+ / SECC स्थिती स्पष्टता',
@@ -790,15 +807,16 @@ function supportCopy(language) {
       readinessStrong: 'मजबूत',
       readinessMedium: 'तयारी हवी',
       readinessLow: 'अधिक माहिती हवी',
-      readinessDisclaimer: 'हा score फक्त Gram Panchayat / BDO पडताळणीसाठी तयारी दाखवतो. तो पात्रता ठरवत नाही आणि approval guarantee देत नाही.',
-      followUpLimitTitle: 'अधिकारी भेटीसाठी case तयार आहे',
-      followUpLimitBody: 'GharDisha ने या टप्प्यासाठी महत्त्वाची follow-up उत्तरे घेतली आहेत. आता उरलेल्या गोष्टी, जसे Awaas+/SECC list, damage certificate, land/site verification आणि final approval, Gram Panchayat / BDO अधिकारी verify करतील.',
-      followUpCounter: 'दिलेली follow-up उत्तरे',
+      readinessDisclaimer: 'हा स्कोअर फक्त Gram Panchayat / BDO पडताळणीसाठी तयारी दाखवतो. तो पात्रता ठरवत नाही आणि मंजुरीची हमी देत नाही.',
+      followUpLimitTitle: 'अधिकारी भेटीसाठी केस तयार आहे',
+      followUpLimitBody: 'GharDisha ने या टप्प्यासाठी महत्त्वाची अनुवर्ती उत्तरे घेतली आहेत. आता उरलेल्या गोष्टी, जसे Awaas+ / SECC यादी, नुकसान प्रमाणपत्र, जमीन/ठिकाण पडताळणी आणि अंतिम मंजुरी, Gram Panchayat / BDO अधिकारी पडताळणी करतील.',
+      followUpCounter: 'दिलेली अनुवर्ती उत्तरे',
     },
   };
 
   return copy[language] || copy.en;
 }
+
 
 function clampScore(value) {
   return Math.max(0, Math.min(100, Math.round(value)));
@@ -818,28 +836,29 @@ function inputSafetyCopy(language) {
     },
     hi: {
       mainIncomplete: 'कृपया पहले घर या आपदा से जुड़ी वास्तविक स्थिति लिखें। घर को क्या हुआ, परिवार अभी कहाँ रह रहा है, और कौन से दस्तावेज हैं — यह बताइए।',
-      unsafeRequest: 'GharDisha केवल PMAY-G केस तैयारी में मदद कर सकता है। यह सरकारी जांच को bypass नहीं कर सकता, झूठे दावे नहीं बना सकता, और approval नहीं दे सकता।',
-      followUpIncomplete: 'यह जवाब follow-up सवाल का सही जवाब नहीं देता। केस को सुरक्षित रूप से अपडेट करने के लिए missing जानकारी का जवाब लिखें।',
+      unsafeRequest: 'GharDisha केवल PMAY-G केस तैयारी में मदद कर सकता है। यह सरकारी जांच को नजरअंदाज नहीं कर सकता, झूठे दावे नहीं बना सकता, और मंजूरी नहीं दे सकता।',
+      followUpIncomplete: 'यह जवाब अनुवर्ती सवाल का सही जवाब नहीं देता। केस को सुरक्षित रूप से अपडेट करने के लिए अधूरी जानकारी का जवाब लिखें।',
     },
     as: {
       mainIncomplete: 'অনুগ্ৰহ কৰি প্ৰথমে ঘৰ বা দুৰ্যোগ সম্পৰ্কীয় বাস্তৱ পৰিস্থিতি লিখক। ঘৰটোৰ কি হ’ল, পৰিয়াল এতিয়া ক’ত আছে, আৰু কি নথি আছে — এইবোৰ লিখক।',
-      unsafeRequest: 'GharDisha কেৱল PMAY-G case preparation-ত সহায় কৰিব পাৰে। ই official verification bypass কৰিব নোৱাৰে, মিছা claim বনাব নোৱাৰে, আৰু approval দিব নোৱাৰে।',
-      followUpIncomplete: 'এই উত্তৰে follow-up প্ৰশ্নৰ তথ্য নিদিয়ে। Case safely update কৰিবলৈ missing তথ্যৰ উত্তৰ লিখক।',
+      unsafeRequest: 'GharDisha কেৱল PMAY-G কেছ প্রস্তুতিত সহায় কৰিব পাৰে। ই চৰকাৰী যাচাই এৰাই চলিব নোৱাৰে, মিছা দাবী বনাব নোৱাৰে, আৰু অনুমোদন দিব নোৱাৰে।',
+      followUpIncomplete: 'এই উত্তৰে অনুবৰ্তী প্ৰশ্নৰ তথ্য নিদিয়ে। কেছ সুৰক্ষিতভাৱে আপডেট কৰিবলৈ বাকী থকা তথ্যৰ উত্তৰ লিখক।',
     },
     ta: {
       mainIncomplete: 'முதலில் வீடு அல்லது பேரிடர் தொடர்பான உண்மையான நிலையை எழுதுங்கள். வீட்டிற்கு என்ன நடந்தது, குடும்பம் இப்போது எங்கு தங்கியுள்ளது, எந்த ஆவணங்கள் உள்ளன என்பதை சேர்க்கவும்.',
-      unsafeRequest: 'GharDisha PMAY-G case preparation-க்கு மட்டும் உதவும். அரசு சரிபார்ப்பை bypass செய்ய முடியாது, பொய்யான claims உருவாக்க முடியாது, approval சொல்ல முடியாது.',
-      followUpIncomplete: 'இந்த பதில் follow-up கேள்விக்கு தேவையான தகவலை தரவில்லை. Case-ஐ பாதுகாப்பாக update செய்ய missing தகவலுக்கு பதில் எழுதுங்கள்.',
+      unsafeRequest: 'GharDisha PMAY-G கேஸ் தயாரிப்பிற்கு மட்டும் உதவும். அரசு சரிபார்ப்பை தவிர்க்க முடியாது, பொய்யான கோரிக்கைகள் உருவாக்க முடியாது, ஒப்புதல் சொல்ல முடியாது.',
+      followUpIncomplete: 'இந்த பதில் அனுவற்றி கேள்விக்கு தேவையான தகவலை தரவில்லை. கேஸை பாதுகாப்பாக புதுப்பிக்க மீதமுள்ள தகவலுக்கு பதில் எழுதுங்கள்.',
     },
     mr: {
       mainIncomplete: 'कृपया आधी घर किंवा आपत्तीशी संबंधित खरी परिस्थिती लिहा. घराचे काय झाले, कुटुंब सध्या कुठे राहत आहे, आणि कोणती कागदपत्रे आहेत ते सांगा.',
-      unsafeRequest: 'GharDisha फक्त PMAY-G case preparation मध्ये मदत करू शकते. ते सरकारी पडताळणी bypass करू शकत नाही, खोटे claims बनवू शकत नाही, आणि approval देऊ शकत नाही.',
-      followUpIncomplete: 'हे उत्तर follow-up प्रश्नाचे योग्य उत्तर देत नाही. Case सुरक्षितपणे update करण्यासाठी missing माहितीचे उत्तर लिहा.',
+      unsafeRequest: 'GharDisha फक्त PMAY-G केस तयारीमध्ये मदत करू शकते. ते सरकारी पडताळणीला बगल देऊ शकत नाही, खोटे दावे बनवू शकत नाही, आणि मंजुरी देऊ शकत नाही.',
+      followUpIncomplete: 'हे उत्तर अनुवर्ती प्रश्नाचे योग्य उत्तर देत नाही. केस सुरक्षितपणे अपडेट करण्यासाठी उरलेल्या माहितीचे उत्तर लिहा.',
     },
   };
 
   return copy[language] || copy.en;
 }
+
 
 const JAILBREAK_OR_ABUSE_PATTERNS = [
   /ignore\s+(all\s+)?(previous|above|system|developer)\s+(instructions|rules)/i,
@@ -1165,6 +1184,55 @@ const COMMON_DISPLAY_TRANSLATIONS = {
     ta: 'பள்ளியில் தற்காலிக தங்குமிடம்',
     mr: 'शाळेत तात्पुरता आसरा',
   },
+
+  'Aadhaar card': {
+    hi: 'आधार कार्ड',
+    as: 'Aadhaar card',
+    ta: 'Aadhaar card',
+    mr: 'Aadhaar card',
+  },
+  'ration card': {
+    hi: 'राशन कार्ड',
+    as: 'ration card',
+    ta: 'ration card',
+    mr: 'ration card',
+  },
+  'bank account': {
+    hi: 'बैंक खाता',
+    as: 'bank account',
+    ta: 'bank account',
+    mr: 'bank account',
+  },
+  'damage certificate': {
+    hi: 'नुकसान प्रमाणपत्र',
+    as: 'ক্ষতিৰ প্ৰমাণপত্ৰ',
+    ta: 'சேதச் சான்று',
+    mr: 'नुकसान प्रमाणपत्र',
+  },
+  'damage proof': {
+    hi: 'नुकसान का प्रमाण',
+    as: 'ক্ষতিৰ প্ৰমাণ',
+    ta: 'சேதச் சான்று',
+    mr: 'नुकसानाचा पुरावा',
+  },
+  'site verification': {
+    hi: 'स्थान की जांच',
+    as: 'স্থান যাচাই',
+    ta: 'இட சரிபார்ப்பு',
+    mr: 'ठिकाण पडताळणी',
+  },
+  'proof gaps': {
+    hi: 'प्रमाण की कमी',
+    as: 'প্ৰমাণৰ অভাৱ',
+    ta: 'ஆதார குறைகள்',
+    mr: 'पुराव्याच्या कमतरता',
+  },
+  'official verification': {
+    hi: 'सरकारी जांच',
+    as: 'চৰকাৰী যাচাই',
+    ta: 'அரசு சரிபார்ப்பு',
+    mr: 'सरकारी पडताळणी',
+  },
 };
 
 function displayText(value, language) {
@@ -1195,6 +1263,90 @@ function CaseFact({ label, value, language }) {
   );
 }
 
+function inferUploadedDocumentType(uploadedDocument, t) {
+  if (!uploadedDocument) return '';
+
+  const haystack = [
+    uploadedDocument.filename,
+    uploadedDocument.method,
+    uploadedDocument.extracted_text,
+    uploadedDocument.summary,
+  ].filter(Boolean).join(' ').toLowerCase();
+
+  if (/aadhaar|aadhar|uidai|आधार|ஆதார்|আধাৰ/.test(haystack)) return t('docTypeAadhaar');
+  if (/ration|राशन|रेशन|ரேஷன்|ৰেচন/.test(haystack)) return t('docTypeRation');
+  if (/bank|passbook|account|बैंक|बँक|வங்கி/.test(haystack)) return t('docTypeBank');
+  if (/damage|certificate|panchayat|letter|नुकसान|प्रमाण|पत्र|சான்று|சேதம்|पुरावा|क्षति|ক্ষতি/.test(haystack)) return t('docTypeDamageCertificate');
+  if (/land|patta|khatian|khata|जमीन|भूमि|நில|মাটি|জমি/.test(haystack)) return t('docTypeLandDocument');
+  if (/image|photo|jpeg|jpg|png|webp/.test(haystack)) return t('docTypePhotoOrImage');
+  if (/pdf|text|txt/.test(haystack)) return t('docTypePdfOrText');
+
+  return t('documentTypeUnclear');
+}
+
+function DocumentConfidenceBoundary({ caseFacts, uploadedDocument, language, t }) {
+  const mentionedDocs = Array.isArray(caseFacts?.documents_available)
+    ? caseFacts.documents_available.filter(Boolean)
+    : [];
+  const uploadedType = inferUploadedDocumentType(uploadedDocument, t);
+  const mentionedText = mentionedDocs.join(' ');
+  const aadhaarMentioned = textHasAny(mentionedText, ['aadhaar', 'aadhar', 'आधार', 'আধাৰ', 'ஆதார்']);
+  const rationUploaded = uploadedDocument && uploadedType === t('docTypeRation');
+
+  const carryChips = uploadedDocument
+    ? [t('carryUploadedFile'), t('carryMentionedOriginals'), t('carryDamagePhotos'), t('carryOfficialConfirm')]
+    : [t('carryOriginalsIfAvailable'), t('carryDamagePhotos'), t('carryOfficialConfirm')];
+
+  return (
+    <div className="document-confidence-panel">
+      <div className="document-confidence-header">
+        <span>
+          <FileText size={18} />
+          {t('documentReadiness')}
+        </span>
+        <strong>{uploadedDocument ? t('uploadChecked') : t('selfReportedOnly')}</strong>
+      </div>
+
+      <div className="document-readiness-grid">
+        <div className="document-confidence-row">
+          <span>{t('docsMentioned')}</span>
+          <div className="document-chip-row">
+            {mentionedDocs.length > 0
+              ? mentionedDocs.map((d) => <em key={d}>{displayText(d, language)}</em>)
+              : <em className="muted-chip">{t('noDocsMentioned')}</em>}
+          </div>
+        </div>
+
+        <div className="document-confidence-row">
+          <span>{t('uploadedDocCheck')}</span>
+          {uploadedDocument ? (
+            <p className="document-upload-line">
+              <strong>{uploadedDocument.filename}</strong>
+              <span className="document-status-pill">{t('uploadedDocAppears')} {uploadedType}</span>
+              {aadhaarMentioned && rationUploaded ? (
+                <span className="document-warning-pill">{t('docMayNotReplaceAadhaar')}</span>
+              ) : null}
+            </p>
+          ) : (
+            <p>{t('noDocumentUploaded')}</p>
+          )}
+        </div>
+      </div>
+
+      <div className="document-take-row" aria-label={t('carryToBDO')}>
+        <span>{t('carryToBDO')}</span>
+        <div className="document-chip-row">
+          {carryChips.map((item) => <em key={item}>{item}</em>)}
+        </div>
+      </div>
+
+      <p className="document-boundary-note">
+        <ShieldCheck size={16} />
+        {t('documentNotVerified')}
+      </p>
+    </div>
+  );
+}
 function getDemoVisualCopy(language) {
   const copy = {
     en: {
@@ -1243,7 +1395,7 @@ function getDemoVisualCopy(language) {
       structured: 'संरचित',
       missingProof: 'प्रमाण की कमी',
       detected: 'पहचानी गई',
-      bdoTitle: 'Gram Panchayat / BDO',
+      bdoTitle: 'ग्राम पंचायत / BDO',
       bdoBody: 'अंतिम जांच इंसान के पास रहती है',
       visualSteps: [
         { title: 'आपदा की कहानी', body: 'आवाज़ / लिखित / फाइल' },
@@ -1251,7 +1403,7 @@ function getDemoVisualCopy(language) {
         { title: 'स्रोत जांच', body: 'PMAY-G स्रोत संग्रह' },
         { title: 'BDO योजना', body: 'मानवीय निर्णय' },
       ],
-      journeyKicker: 'जज डेमो फ्लो',
+      journeyKicker: 'जज डेमो प्रवाह',
       journeyTitle: '10 सेकंड में AI की उपयोगिता समझें',
       journeySteps: [
         { title: 'बिखरी कहानी', body: 'आवाज़, लिखित बात या दस्तावेज़ साफ आवास केस में बदलता है।' },
@@ -1262,7 +1414,7 @@ function getDemoVisualCopy(language) {
       ribbon: {
         studentPrototype: { title: 'छात्र प्रोटोटाइप', body: 'यह भारत सरकार की आधिकारिक सेवा नहीं है' },
         sourceGrounded: { title: 'स्रोत-आधारित', body: 'क्यूरेटेड PMAY-G मार्गदर्शन का उपयोग, बेबुनियाद दावे नहीं' },
-        officialsDecide: { title: 'अधिकारी निर्णय लेते हैं', body: 'Gram Sabha / BDO अंतिम जांच अधिकार रखते हैं' },
+        officialsDecide: { title: 'अधिकारी निर्णय लेते हैं', body: 'ग्राम सभा / BDO अंतिम जांच अधिकार रखते हैं' },
       },
       proofPoints: ['बिखरी कहानी से केस फाइल', 'स्रोत-आधारित मार्गदर्शन', 'अंतिम निर्णय इंसान के पास'],
       capabilityCards: [
@@ -1275,7 +1427,7 @@ function getDemoVisualCopy(language) {
     },
     as: {
       safePathTitle: 'PMAY-G লৈ সুৰক্ষিত পথ',
-      pathTag: 'কাহিনী → প্ৰমাণৰ অভাৱ → official visit plan',
+      pathTag: 'কাহিনী → প্ৰমাণৰ অভাৱ → বিষয়াক সাক্ষাৎ কৰাৰ পৰিকল্পনা',
       ruralStory: 'গাঁও পৰিয়ালৰ কাহিনী',
       caseFacts: 'কেছৰ তথ্য',
       structured: 'সাজু কৰা',
@@ -1285,31 +1437,31 @@ function getDemoVisualCopy(language) {
       bdoBody: 'চূড়ান্ত যাচাই মানুহৰ হাতত থাকে',
       visualSteps: [
         { title: 'দুৰ্যোগৰ কাহিনী', body: 'আৱাজ / লেখা / ফাইল' },
-        { title: 'AI case file', body: 'তথ্য + অভাৱ' },
+        { title: 'AI কেছ ফাইল', body: 'তথ্য + অভাৱ' },
         { title: 'উৎস যাচাই', body: 'PMAY-G উৎস সংগ্রহ' },
         { title: 'BDO পৰিকল্পনা', body: 'মানৱ সিদ্ধান্ত' },
       ],
-      journeyKicker: 'জজ ডেমো flow',
+      journeyKicker: 'জজ ডেমো প্ৰবাহ',
       journeyTitle: '১০ ছেকেণ্ডত AI ৰ মূল্য বুজক',
       journeySteps: [
-        { title: 'অস্পষ্ট কাহিনী', body: 'আৱাজ, লেখা বা নথি এখন স্পষ্ট housing case-ত সলনি হয়।' },
-        { title: 'AI case file', body: 'সিস্টেমে তথ্য, অনিশ্চয়তা, প্ৰমাণৰ অভাৱ আৰু পৰৱৰ্তী প্ৰশ্ন উলিয়ায়।' },
+        { title: 'অস্পষ্ট কাহিনী', body: 'আৱাজ, লেখা বা নথি এখন স্পষ্ট ঘৰৰ কেছত সলনি হয়।' },
+        { title: 'AI কেছ ফাইল', body: 'সিস্টেমে তথ্য, অনিশ্চয়তা, প্ৰমাণৰ অভাৱ আৰু পৰৱৰ্তী প্ৰশ্ন উলিয়ায়।' },
         { title: 'উৎস যাচাই', body: 'মাৰ্গদৰ্শন কিউৰেটেড PMAY-G উৎস সংগ্রহৰ ওপৰত ভিত্তি কৰি থাকে।' },
-        { title: 'মানৱ handoff', body: 'পৰিয়ালে BDO-সাজু পৰিকল্পনা পায় আৰু চূড়ান্ত সিদ্ধান্ত official-ৰ হাতত থাকে।' },
+        { title: 'মানৱলৈ হস্তান্তৰ', body: 'পৰিয়ালে BDO-সাজু পৰিকল্পনা পায় আৰু চূড়ান্ত সিদ্ধান্ত বিষয়াৰ হাতত থাকে।' },
       ],
       ribbon: {
-        studentPrototype: { title: 'ছাত্ৰ prototype', body: 'এইটো ভাৰত চৰকাৰৰ আনুষ্ঠানিক সেৱা নহয়' },
-        sourceGrounded: { title: 'উৎস-ভিত্তিক', body: 'কিউৰেটেড PMAY-G মাৰ্গদৰ্শন ব্যৱহাৰ কৰে, ভিত্তিহীন claims নহয়' },
-        officialsDecide: { title: 'Official-এ সিদ্ধান্ত লয়', body: 'Gram Sabha / BDO চূড়ান্ত যাচাই ৰাখে' },
+        studentPrototype: { title: 'ছাত্ৰ প্ৰোটোটাইপ', body: 'এইটো ভাৰত চৰকাৰৰ আনুষ্ঠানিক সেৱা নহয়' },
+        sourceGrounded: { title: 'উৎস-ভিত্তিক', body: 'কিউৰেটেড PMAY-G মাৰ্গদৰ্শন ব্যৱহাৰ কৰে, ভিত্তিহীন দাবী নহয়' },
+        officialsDecide: { title: 'বিষয়াই সিদ্ধান্ত লয়', body: 'Gram Sabha / BDO চূড়ান্ত যাচাইৰ অধিকাৰ ৰাখে' },
       },
-      proofPoints: ['কাহিনীৰ পৰা case file', 'উৎস-ভিত্তিক মাৰ্গদৰ্শন', 'মানুহৰ final decision'],
+      proofPoints: ['কাহিনীৰ পৰা কেছ ফাইল', 'উৎস-ভিত্তিক মাৰ্গদৰ্শন', 'মানুহৰ চূড়ান্ত সিদ্ধান্ত'],
       capabilityCards: [
         { title: 'RAG', body: 'PMAY-G উৎস লাইব্ৰেৰী' },
         { title: 'আৱাজ', body: 'বিশ্বাসযোগ্য সহায়কৰ ইনপুট' },
-        { title: 'সুৰক্ষিত', body: 'মিছা eligibility নহয়' },
+        { title: 'সুৰক্ষিত', body: 'মিছা যোগ্যতা নহয়' },
       ],
-      starterTitle: 'দ্ৰুত demo লাগে?',
-      starterBody: 'এটা বাস্তৱসম্মত উদাহৰণ বাছক, তাৰ পিছত trusted helper-ৰ দৰে edit কৰক।',
+      starterTitle: 'দ্ৰুত ডেমো লাগে?',
+      starterBody: 'এটা বাস্তৱসম্মত উদাহৰণ বাছক, তাৰ পিছত বিশ্বাসযোগ্য সহায়কৰ দৰে সলনি কৰক।',
     },
     ta: {
       safePathTitle: 'PMAY-G-க்கு பாதுகாப்பான வழி',
@@ -1323,31 +1475,31 @@ function getDemoVisualCopy(language) {
       bdoBody: 'இறுதி சரிபார்ப்பு மனிதர்களிடம் இருக்கும்',
       visualSteps: [
         { title: 'பேரிடர் கதை', body: 'குரல் / எழுத்து / கோப்பு' },
-        { title: 'AI case file', body: 'தகவல்கள் + குறைகள்' },
+        { title: 'AI கேஸ் கோப்பு', body: 'தகவல்கள் + குறைகள்' },
         { title: 'மூல சரிபார்ப்பு', body: 'PMAY-G மூலத் தொகுப்பு' },
         { title: 'BDO திட்டம்', body: 'மனித முடிவு' },
       ],
-      journeyKicker: 'ஜட்ஜ் demo flow',
+      journeyKicker: 'நடுவர் டெமோ ஓட்டம்',
       journeyTitle: '10 விநாடிகளில் AI மதிப்பை புரிந்துகொள்ளுங்கள்',
       journeySteps: [
         { title: 'சீரற்ற கதை', body: 'குரல், எழுத்து அல்லது ஆவணம் தெளிவான வீட்டு வழக்காக மாறும்.' },
-        { title: 'AI case file', body: 'சிஸ்டம் தகவல்கள், தெளிவின்மை, ஆதார குறைகள், அடுத்த கேள்வி ஆகியவற்றை கண்டறியும்.' },
+        { title: 'AI கேஸ் கோப்பு', body: 'சிஸ்டம் தகவல்கள், தெளிவின்மை, ஆதார குறைகள், அடுத்த கேள்வி ஆகியவற்றை கண்டறியும்.' },
         { title: 'மூல சரிபார்ப்பு', body: 'வழிகாட்டல் க்யூரேட் செய்யப்பட்ட PMAY-G மூலத் தொகுப்பின் அடிப்படையில் இருக்கும்.' },
-        { title: 'மனித handoff', body: 'குடும்பத்திற்கு BDO-தயார் திட்டம் கிடைக்கும்; இறுதி அதிகாரம் அதிகாரிகளிடம் இருக்கும்.' },
+        { title: 'மனிதரிடம் ஒப்படைப்பு', body: 'குடும்பத்திற்கு BDO-தயார் திட்டம் கிடைக்கும்; இறுதி அதிகாரம் அதிகாரிகளிடம் இருக்கும்.' },
       ],
       ribbon: {
-        studentPrototype: { title: 'மாணவர் prototype', body: 'இது இந்திய அரசின் அதிகாரப்பூர்வ சேவை அல்ல' },
-        sourceGrounded: { title: 'மூல-அடிப்படையிலானது', body: 'க்யூரேட் செய்யப்பட்ட PMAY-G வழிகாட்டலை பயன்படுத்தும்; ஆதாரமற்ற claims அல்ல' },
+        studentPrototype: { title: 'மாணவர் முன்மாதிரி', body: 'இது இந்திய அரசின் அதிகாரப்பூர்வ சேவை அல்ல' },
+        sourceGrounded: { title: 'மூல-அடிப்படையிலானது', body: 'க்யூரேட் செய்யப்பட்ட PMAY-G வழிகாட்டலை பயன்படுத்தும்; ஆதாரமற்ற கோரிக்கைகள் அல்ல' },
         officialsDecide: { title: 'அதிகாரிகள் முடிவு செய்கிறார்கள்', body: 'Gram Sabha / BDO இறுதி சரிபார்ப்பு அதிகாரத்தை வைத்திருக்கிறார்கள்' },
       },
-      proofPoints: ['கதையிலிருந்து case file', 'மூல-அடிப்படையிலான வழிகாட்டல்', 'இறுதி முடிவு மனிதர்களிடம்'],
+      proofPoints: ['கதையிலிருந்து கேஸ் கோப்பு', 'மூல-அடிப்படையிலான வழிகாட்டல்', 'இறுதி முடிவு மனிதர்களிடம்'],
       capabilityCards: [
         { title: 'RAG', body: 'PMAY-G மூல நூலகம்' },
-        { title: 'குரல்', body: 'நம்பகமான உதவியாளர் input' },
-        { title: 'பாதுகாப்பு', body: 'பொய்யான eligibility இல்லை' },
+        { title: 'குரல்', body: 'நம்பகமான உதவியாளர் உள்ளீடு' },
+        { title: 'பாதுகாப்பு', body: 'பொய்யான தகுதி இல்லை' },
       ],
-      starterTitle: 'வேகமான demo வேண்டுமா?',
-      starterBody: 'ஒரு உண்மையான உதாரணத்தை தேர்வு செய்து, trusted helper போல திருத்துங்கள்.',
+      starterTitle: 'வேகமான டெமோ வேண்டுமா?',
+      starterBody: 'ஒரு உண்மையான உதாரணத்தை தேர்வு செய்து, நம்பகமான உதவியாளர் போல திருத்துங்கள்.',
     },
     mr: {
       safePathTitle: 'PMAY-G पर्यंत सुरक्षित मार्ग',
@@ -1361,35 +1513,36 @@ function getDemoVisualCopy(language) {
       bdoBody: 'अंतिम पडताळणी मानवी अधिकाऱ्यांकडे राहते',
       visualSteps: [
         { title: 'आपत्तीची गोष्ट', body: 'आवाज / मजकूर / फाइल' },
-        { title: 'AI case file', body: 'तथ्य + कमतरता' },
+        { title: 'AI केस फाइल', body: 'तथ्य + कमतरता' },
         { title: 'स्रोत तपासणी', body: 'PMAY-G स्रोत संग्रह' },
         { title: 'BDO योजना', body: 'मानवी निर्णय' },
       ],
-      journeyKicker: 'जज demo flow',
-      journeyTitle: '10 सेकंदात AI ची किंमत समजून घ्या',
+      journeyKicker: 'जज डेमो प्रवाह',
+      journeyTitle: '10 सेकंदात AI चे मूल्य समजून घ्या',
       journeySteps: [
         { title: 'गोंधळलेली गोष्ट', body: 'आवाज, मजकूर किंवा कागदपत्र स्पष्ट घरकुल प्रकरणात बदलते.' },
-        { title: 'AI case file', body: 'सिस्टम तथ्य, अनिश्चितता, पुराव्याच्या कमतरता आणि पुढचा प्रश्न शोधते.' },
+        { title: 'AI केस फाइल', body: 'सिस्टम तथ्य, अनिश्चितता, पुराव्याच्या कमतरता आणि पुढचा प्रश्न शोधते.' },
         { title: 'स्रोत तपासणी', body: 'मार्गदर्शन क्युरेटेड PMAY-G स्रोत संग्रहावर आधारित राहते.' },
-        { title: 'मानवी handoff', body: 'कुटुंबाला BDO-तयार योजना मिळते आणि अंतिम अधिकार अधिकाऱ्यांकडे राहतो.' },
+        { title: 'मानवी हस्तांतरण', body: 'कुटुंबाला BDO-तयार योजना मिळते आणि अंतिम अधिकार अधिकाऱ्यांकडे राहतो.' },
       ],
       ribbon: {
-        studentPrototype: { title: 'विद्यार्थी prototype', body: 'ही भारत सरकारची अधिकृत सेवा नाही' },
-        sourceGrounded: { title: 'स्रोत-आधारित', body: 'क्युरेटेड PMAY-G मार्गदर्शन वापरते, आधार नसलेले claims नाहीत' },
+        studentPrototype: { title: 'विद्यार्थी प्रोटोटाइप', body: 'ही भारत सरकारची अधिकृत सेवा नाही' },
+        sourceGrounded: { title: 'स्रोत-आधारित', body: 'क्युरेटेड PMAY-G मार्गदर्शन वापरते, आधार नसलेले दावे नाहीत' },
         officialsDecide: { title: 'अधिकारी निर्णय घेतात', body: 'Gram Sabha / BDO अंतिम पडताळणी अधिकार ठेवतात' },
       },
-      proofPoints: ['गोष्ट ते case file', 'स्रोत-आधारित मार्गदर्शन', 'मानवी अंतिम निर्णय'],
+      proofPoints: ['गोष्ट ते केस फाइल', 'स्रोत-आधारित मार्गदर्शन', 'मानवी अंतिम निर्णय'],
       capabilityCards: [
         { title: 'RAG', body: 'PMAY-G स्रोत लाइब्रेरी' },
-        { title: 'आवाज', body: 'विश्वासू मदतनीस input' },
-        { title: 'सुरक्षित', body: 'खोटी eligibility नाही' },
+        { title: 'आवाज', body: 'विश्वासू मदतनीस इनपुट' },
+        { title: 'सुरक्षित', body: 'खोटी पात्रता नाही' },
       ],
-      starterTitle: 'जलद demo हवा आहे?',
-      starterBody: 'एक वास्तववादी उदाहरण निवडा, मग trusted helper सारखे edit करा.',
+      starterTitle: 'जलद डेमो हवा आहे?',
+      starterBody: 'एक वास्तववादी उदाहरण निवडा, मग विश्वासू मदतनीसासारखे बदला.',
     },
   };
   return copy[language] || copy.en;
 }
+
 
 function ReliefIllustration({ label, language = 'en' } = {}) {
   const copy = getDemoVisualCopy(language);
@@ -1505,15 +1658,57 @@ function getStoryStarters(language) {
     hi: [
       {
         label: 'बाढ़ से नुकसान',
-        text: 'हमारा ग्रामीण घर बाढ़ में क्षतिग्रस्त हो गया। हम अभी रिश्तेदारों के पास अस्थायी रूप से रह रहे हैं। हमारे पास Aadhaar, ration card और bank account है, लेकिन हमें नहीं पता कि नाम Awaas+ या SECC में है या नहीं।',
+        text: 'हमारा ग्रामीण घर बाढ़ में क्षतिग्रस्त हो गया। हम अभी रिश्तेदारों के पास अस्थायी रूप से रह रहे हैं। हमारे पास आधार कार्ड, राशन कार्ड और बैंक खाता है, लेकिन हमें नहीं पता कि नाम Awaas+ या SECC में है या नहीं।',
       },
       {
         label: 'भूकंप से दरारें',
-        text: 'भूकंप और जमीन खिसकने के बाद हमारे कच्चे घर में गहरी दरारें आ गईं। छत सुरक्षित नहीं है, हम अस्थायी shelter में रह रहे हैं, और हमारे पास photos हैं लेकिन official damage certificate अभी नहीं है।',
+        text: 'भूकंप और जमीन खिसकने के बाद हमारे कच्चे घर में गहरी दरारें आ गईं। छत सुरक्षित नहीं है, हम अस्थायी आश्रय में रह रहे हैं, और हमारे पास फोटो हैं लेकिन आधिकारिक नुकसान प्रमाणपत्र अभी नहीं है।',
       },
       {
         label: 'जमीन के कागज नहीं',
-        text: 'आपदा में हमारा घर खराब हो गया। हमारे पास कोई पक्का घर नहीं है, लेकिन जमीन के कागज नहीं मिल रहे हैं। हमें जानना है कि Gram Panchayat या BDO office कौन सा proof माँग सकता है।',
+        text: 'आपदा में हमारा घर खराब हो गया। हमारे पास कोई पक्का घर नहीं है, लेकिन जमीन के कागज नहीं मिल रहे हैं। हमें जानना है कि Gram Panchayat या BDO कार्यालय कौन सा प्रमाण मांग सकता है।',
+      },
+    ],
+    as: [
+      {
+        label: 'বানপানীৰ ক্ষতি',
+        text: 'আমাৰ গাঁওৰ ঘৰটো বানপানীত ক্ষতিগ্ৰস্ত হৈছে। আমি এতিয়া আত্মীয়ৰ ঘৰত সাময়িকভাৱে আছোঁ। আমাৰ Aadhaar card, ration card আৰু bank account আছে, কিন্তু আমাৰ নাম Awaas+ বা SECC তালিকাত আছে নে নাই নাজানো।',
+      },
+      {
+        label: 'ভূমিকম্পৰ ফাট',
+        text: 'ভূমিকম্প আৰু মাটিৰ সৰণিৰ পিছত আমাৰ কেঁচা ঘৰত গভীৰ ফাট পৰিছে। চালখন সুৰক্ষিত নহয়, আমি সাময়িক আশ্ৰয়ত আছোঁ, আৰু আমাৰ ফটো আছে কিন্তু চৰকাৰী ক্ষতিৰ প্ৰমাণপত্ৰ এতিয়াও নাই।',
+      },
+      {
+        label: 'মাটিৰ নথি নাই',
+        text: 'দুৰ্যোগত আমাৰ ঘৰ ক্ষতিগ্ৰস্ত হৈছে। আমাৰ কোনো পক্কা ঘৰ নাই, কিন্তু মাটিৰ নথি নাই। Gram Panchayat বা BDO কাৰ্যালয়ে কোন প্ৰমাণ বিচাৰিব পাৰে আমি জানিব বিচাৰোঁ।',
+      },
+    ],
+    ta: [
+      {
+        label: 'வெள்ள சேதம்',
+        text: 'எங்கள் கிராம வீடு வெள்ளத்தில் சேதமடைந்தது. நாங்கள் இப்போது உறவினர்களிடம் தற்காலிகமாக தங்கியுள்ளோம். எங்களிடம் Aadhaar card, ration card மற்றும் bank account உள்ளன, ஆனால் எங்கள் பெயர் Awaas+ அல்லது SECC பட்டியலில் உள்ளதா தெரியவில்லை.',
+      },
+      {
+        label: 'நிலநடுக்க பிளவுகள்',
+        text: 'நிலநடுக்கம் மற்றும் நில நகர்வு பிறகு எங்கள் குடிசை வீட்டில் ஆழமான பிளவுகள் ஏற்பட்டன. கூரை பாதுகாப்பாக இல்லை, நாங்கள் தற்காலிக தங்குமிடத்தில் உள்ளோம், புகைப்படங்கள் உள்ளன ஆனால் அதிகாரப்பூர்வ சேதச் சான்று இன்னும் இல்லை.',
+      },
+      {
+        label: 'நில ஆவணங்கள் இல்லை',
+        text: 'பேரிடரில் எங்கள் வீடு சேதமடைந்தது. எங்களிடம் பக்கா வீடு இல்லை, ஆனால் நில ஆவணங்கள் இல்லை. Gram Panchayat அல்லது BDO அலுவலகம் எந்த சான்றை கேட்கலாம் என்பதை அறிய வேண்டும்.',
+      },
+    ],
+    mr: [
+      {
+        label: 'पुरामुळे नुकसान',
+        text: 'आमचे ग्रामीण घर पुरामुळे नुकसान झाले. आम्ही सध्या नातेवाईकांकडे तात्पुरते राहत आहोत. आमच्याकडे Aadhaar card, ration card आणि bank account आहे, पण आमचे नाव Awaas+ किंवा SECC यादीत आहे का ते माहित नाही.',
+      },
+      {
+        label: 'भूकंपामुळे भेगा',
+        text: 'भूकंप आणि जमीन हलल्यामुळे आमच्या कच्च्या घरात खोल भेगा पडल्या. छप्पर सुरक्षित नाही, आम्ही तात्पुरत्या आसऱ्यात आहोत, आणि आमच्याकडे फोटो आहेत पण अधिकृत नुकसान प्रमाणपत्र अजून नाही.',
+      },
+      {
+        label: 'जमीन कागदपत्रे नाहीत',
+        text: 'आपत्तीमध्ये आमचे घर नुकसान झाले. आमच्याकडे पक्का घर नाही, पण जमीन कागदपत्रे हरवली आहेत. Gram Panchayat किंवा BDO कार्यालय कोणता पुरावा मागू शकते हे आम्हाला जाणून घ्यायचे आहे.',
       },
     ],
   };
@@ -1740,9 +1935,9 @@ function App() {
               </button>
               <span className="trust-note splash-trust"><ShieldCheck size={16} /> {copy.notOfficial}</span>
               <div className="splash-metrics" aria-label="GharDisha safety and workflow highlights">
-                <div><strong>5</strong><span>languages</span></div>
-                <div><strong>2-step</strong><span>follow-up limit</span></div>
-                <div><strong>0</strong><span>approval claims</span></div>
+                <div><strong>5</strong><span>{copy.metricLanguages}</span></div>
+                <div><strong>2</strong><span>{copy.metricFollowups}</span></div>
+                <div><strong>0</strong><span>{copy.metricClaims}</span></div>
               </div>
             </div>
             <ReliefIllustration label={copy.illustrationLabel} language={language} />
@@ -2067,13 +2262,6 @@ function App() {
             <button className="ghost-btn" onClick={() => window.print()}>{t('printBtn')}</button>
           </div>
 
-          {result.uploaded_document && (
-            <GlassCard className="document-card">
-              <h3>{t('docProcessed')}</h3>
-              <p><strong>{result.uploaded_document.filename}</strong> &mdash; {result.uploaded_document.method}</p>
-            </GlassCard>
-          )}
-
           <div className="results-grid">
             <GlassCard className="large-card">
               <h3>{t('caseFacts')}</h3>
@@ -2082,10 +2270,12 @@ function App() {
               <CaseFact label={t('factRural')} value={caseFacts.rural_context?.value} language={language} />
               <CaseFact label={t('factPucca')} value={caseFacts.owns_pucca_house?.value} language={language} />
               <CaseFact label={t('factAwaas')} value={caseFacts.awaas_or_secc_status?.value} language={language} />
-              <div className="chips-block">
-                <span>{t('docsAvailable')}</span>
-                <div>{(caseFacts.documents_available || []).map((d) => <em key={d}>{d}</em>)}</div>
-              </div>
+              <DocumentConfidenceBoundary
+                caseFacts={caseFacts}
+                uploadedDocument={result.uploaded_document}
+                language={language}
+                t={t}
+              />
             </GlassCard>
 
             <GlassCard className="highlight-card">

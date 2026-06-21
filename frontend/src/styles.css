@@ -913,8 +913,7 @@
   }
   
   .premium-topbar {
-    position: sticky;
-    top: 14px;
+    position: relative;
     z-index: 20;
     display: flex;
     justify-content: space-between;
@@ -2665,4 +2664,248 @@ textarea {
 .source-card span,
 .source-card small {
   overflow-wrap: anywhere;
+}
+
+/* ---------- Compact document readiness boundary ---------- */
+.document-confidence-panel {
+  position: relative;
+  z-index: 1;
+  margin-top: 22px;
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(236, 253, 245, .92), rgba(239, 246, 255, .88));
+  border: 1px solid rgba(16, 185, 129, .22);
+}
+
+.document-confidence-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.document-confidence-header > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #064e3b;
+  font-size: 15px;
+  font-weight: 950;
+  letter-spacing: -.02em;
+}
+
+.document-confidence-header > strong {
+  flex: 0 0 auto;
+  padding: 7px 10px;
+  border-radius: 999px;
+  color: #1e3a8a;
+  background: rgba(219, 234, 254, .86);
+  border: 1px solid rgba(37, 99, 235, .14);
+  font-size: 11px;
+  font-weight: 950;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.document-readiness-grid {
+  display: grid;
+  grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+  gap: 12px;
+}
+
+.document-confidence-row,
+.document-take-row {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.document-confidence-row {
+  padding: 12px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, .58);
+  border: 1px solid rgba(15, 23, 42, .06);
+}
+
+.document-confidence-row > span,
+.document-take-row > span {
+  color: #334155;
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+}
+
+.document-confidence-row p {
+  margin: 0;
+  color: #334155;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.document-upload-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+}
+
+.document-upload-line > strong {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.document-status-pill,
+.document-warning-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 6px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 950;
+}
+
+.document-status-pill {
+  color: #065f46;
+  background: rgba(209, 250, 229, .86);
+  border: 1px solid rgba(16, 185, 129, .16);
+}
+
+.document-warning-pill {
+  color: #9a3412;
+  background: rgba(255, 237, 213, .94);
+  border: 1px solid rgba(249, 115, 22, .18);
+}
+
+.document-take-row {
+  padding: 12px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, .52);
+  border: 1px dashed rgba(15, 23, 42, .12);
+}
+
+.document-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.document-chip-row em,
+.muted-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 7px 11px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .88);
+  border: 1px solid rgba(15, 23, 42, .08);
+  color: #065f46;
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.muted-chip {
+  color: #64748b;
+}
+
+.document-boundary-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 16px;
+  color: #713f12;
+  background: rgba(255, 251, 235, .92);
+  border: 1px solid rgba(245, 158, 11, .20);
+  font-size: 12px;
+  font-weight: 850;
+  line-height: 1.5;
+}
+
+.document-boundary-note svg {
+  flex: 0 0 auto;
+  margin-top: 1px;
+}
+
+@media (max-width: 760px) {
+  .document-confidence-header,
+  .document-readiness-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .document-confidence-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+/* ---------- Final result-card height cleanup ---------- */
+/* Keeps the live obstacle / follow-up panel visually full instead of leaving dead space. */
+.results-grid {
+  align-items: stretch;
+}
+
+.results-grid > .highlight-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.highlight-card .big-text {
+  flex: 0 0 auto;
+}
+
+.highlight-card .followup-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+}
+
+.followup-box > .case-updated-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.followup-box > .case-updated-box > p {
+  flex: 0 0 auto;
+}
+
+.followup-box .followup-final-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.followup-box .remaining-question {
+  margin-top: auto;
+}
+
+.followup-label {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.followup-input {
+  flex: 1;
+  min-height: 190px;
+}
+
+@media (max-width: 980px) {
+  .highlight-card .followup-box {
+    min-height: 0;
+  }
+
+  .followup-input {
+    min-height: 140px;
+  }
 }

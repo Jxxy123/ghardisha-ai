@@ -240,15 +240,18 @@ def language_instruction(language: str) -> str:
     if language == "en":
         return "Write all user-facing text in clear, simple English."
     return (
-        f"Write ALL user-facing text values in {name}: status, plain_language_summary, "
-        f"biggest_obstacle, next_best_question, every item in next_48_hours, "
-        f"missing_or_uncertain_items, questions_for_bdo_or_panchayat, and human_in_loop. "
-        f"Use simple words a rural family can understand. Keep only technical/official tokens "
-        f"such as PMAY-G, Awaas+, SECC, BDO, Gram Sabha, Gram Panchayat, Aadhaar, and "
-        f"GharDisha AI in their original form when useful. Keep JSON keys, source IDs, and "
-        f"source names in English. Do not output English sentences, English action verbs "
-        f"like 'Request/Ask/Inquire/Prepare', or mixed English-Hindi/Tamil/Marathi/Assamese "
-        f"user-facing sentences."
+        f"Write EVERY user-facing text value in {name}. This includes status, "
+        f"plain_language_summary, biggest_obstacle, next_best_question, every item in "
+        f"next_48_hours, missing_or_uncertain_items, questions_for_bdo_or_panchayat, "
+        f"and human_in_loop. Use simple words a rural family can understand. Keep only "
+        f"official/technical tokens such as PMAY-G, Awaas+, SECC, BDO, Gram Sabha, "
+        f"Gram Panchayat, Aadhaar, and GharDisha AI in their original form when useful. "
+        f"Keep JSON keys, source IDs, and source names in English. Do not output English "
+        f"sentences, English action verbs, or mixed-language user-facing content. Avoid "
+        f"English words such as Request, Ask, Inquire, Prepare, proof, damage certificate, "
+        f"land documents, eligibility, approval, verification, source, question, action plan, "
+        f"case, follow-up, list, status, shelter, official, or summary unless they are part "
+        f"of a proper official name. If you need those meanings, translate them into {name}."
     )
 
 
@@ -268,6 +271,8 @@ You must follow these rules:
 - Warn that false or wrong information can be rejected during Gram Sabha / BDO / official verification.
 - Never use income/land/asset thresholds as a pass/fail calculator.
 - Always state missing facts and uncertainty.
+- Treat documents mentioned in the story as self-reported, not officially verified. Say the family mentioned/reported them, not that GharDisha confirmed them.
+- If uploaded document text is supplied, use cautious wording such as 'appears to be' and still say Gram Panchayat / BDO officials must confirm document type, validity, and acceptance. Never validate identity or document authenticity.
 - Every recommendation must be framed as preparation for official verification.
 - Do not invent helpline numbers, exact dates, portal claims, or scheme rules not present in the supplied source snippets.
 - Output valid JSON only. No markdown.
@@ -473,6 +478,7 @@ async def extract_case_live(
 Interpret this real-time user/helper input for PMAY-G navigation.
 
 Language preference: {language}
+{language_instruction(language)}
 
 Free-form story:
 {story}
@@ -483,6 +489,7 @@ Optional uploaded/pasted document text:
 {CASE_EXTRACTION_SCHEMA_DESCRIPTION}
 
 Be conservative. If a fact is not clearly stated, mark it unknown/uncertain.
+Document confidence rules: documents_available should list documents the family mentioned or the uploaded text appears to show, but treat them as self-reported/unverified. Never treat a document name as officially verified. If an uploaded document is ambiguous, keep the document type uncertain and say officials must confirm it.
 If the user says they are living with relatives, neighbours, a school, a camp, or a shelter, record that as current_shelter only. Do not infer that the household owns a pucca house from the shelter unless the story clearly says so.
 """.strip()
 
@@ -564,6 +571,8 @@ Retrieved PMAY-G source snippets:
 Safety rules:
 {json.dumps(safety_rules(), ensure_ascii=False)}
 
+Before returning JSON, check again that every user-facing sentence is in the selected language. Official source names may stay in English, but action steps, questions, obstacles, missing items, and summaries must not stay in English.
+
 Return JSON with exactly these keys:
 {{
   "status": string,
@@ -610,6 +619,7 @@ Output requirements:
   Gram Panchayat or BDO official about other housing-support options that may fit. Do NOT
   name or invent details of other government schemes that are not in the supplied source
   snippets — point the user to a human official for alternatives instead.
+- DOCUMENT CONFIDENCE BOUNDARY: if you mention Aadhaar, ration card, bank account, land papers, certificates, or uploaded documents, phrase them as self-reported or 'appears to be' unless official verification is supplied. Never say GharDisha verified a document. State that Gram Panchayat / BDO must confirm document type, validity, and acceptance. If document confusion is possible, tell the helper to carry the mentioned originals/photos or uploaded file and ask the official to confirm what is accepted.
 - Include a human official boundary in human_in_loop.
 - Use source IDs from the retrieved snippets in sources_used.
 """.strip()
@@ -739,6 +749,18 @@ _COMMON_LOCALIZATION_PHRASES = {
         "ta": "சரிபார்ப்பிற்கு நான் எந்த ஆவணங்களை வழங்க வேண்டும்?",
         "mr": "पडताळणीसाठी मला कोणती कागदपत्रे द्यावी लागतील?",
     },
+    "The family mentioned Aadhaar card and ration card, but these documents must be confirmed by Gram Panchayat / BDO officials.": {
+        "hi": "परिवार ने Aadhaar card और ration card का उल्लेख किया है, लेकिन इन दस्तावेजों की पुष्टि Gram Panchayat / BDO अधिकारी करेंगे।",
+        "as": "পৰিয়ালে Aadhaar card আৰু ration card উল্লেখ কৰিছে, কিন্তু এই নথিসমূহ Gram Panchayat / BDO বিষয়াই নিশ্চিত কৰিব লাগিব।",
+        "ta": "குடும்பம் Aadhaar card மற்றும் ration card பற்றி கூறியுள்ளது, ஆனால் இந்த ஆவணங்களை Gram Panchayat / BDO அதிகாரிகள் உறுதி செய்ய வேண்டும்.",
+        "mr": "कुटुंबाने Aadhaar card आणि ration card सांगितले आहेत, पण ही कागदपत्रे Gram Panchayat / BDO अधिकारी पुष्टी करतील.",
+    },
+    "Uploaded documents are not official verification. Officials must confirm document type, validity, and acceptance.": {
+        "hi": "अपलोड दस्तावेज सरकारी पुष्टि नहीं है। दस्तावेज का प्रकार, वैधता और स्वीकार्यता अधिकारी ही पुष्टि करेंगे।",
+        "as": "আপলোড কৰা নথি আনুষ্ঠানিক যাচাই নহয়। নথিৰ ধৰণ, বৈধতা আৰু গ্ৰহণযোগ্যতা বিষয়াই নিশ্চিত কৰিব লাগিব।",
+        "ta": "பதிவேற்றிய ஆவணங்கள் அதிகாரப்பூர்வ சரிபார்ப்பு அல்ல. ஆவண வகை, செல்லுபடியாகுதல், ஏற்றுக்கொள்ளப்படுமா என்பதைக் அதிகாரிகள் உறுதி செய்ய வேண்டும்.",
+        "mr": "अपलोड केलेली कागदपत्रे अधिकृत पडताळणी नाहीत. कागदपत्राचा प्रकार, वैधता आणि स्वीकार्यता अधिकारी पुष्टी करतील.",
+    },
     "disaster/damage certificate": {
         "hi": "आपदा/नुकसान प्रमाणपत्र",
         "as": "দুৰ্যোগ/ক্ষতিৰ প্ৰমাণপত্ৰ",
@@ -757,6 +779,91 @@ _COMMON_LOCALIZATION_PHRASES = {
         "ta": "Awaas+ / SECC நிலை",
         "mr": "Awaas+ / SECC स्थिती",
     },
+    "Aadhaar card": {
+        "hi": "आधार कार्ड",
+        "as": "Aadhaar card",
+        "ta": "Aadhaar card",
+        "mr": "Aadhaar card",
+    },
+    "ration card": {
+        "hi": "राशन कार्ड",
+        "as": "ration card",
+        "ta": "ration card",
+        "mr": "ration card",
+    },
+    "bank account": {
+        "hi": "बैंक खाता",
+        "as": "bank account",
+        "ta": "bank account",
+        "mr": "bank account",
+    },
+    "damage certificate": {
+        "hi": "नुकसान प्रमाणपत्र",
+        "as": "ক্ষতিৰ প্ৰমাণপত্ৰ",
+        "ta": "சேதச் சான்று",
+        "mr": "नुकसान प्रमाणपत्र",
+    },
+    "damage proof": {
+        "hi": "नुकसान का प्रमाण",
+        "as": "ক্ষতিৰ প্ৰমাণ",
+        "ta": "சேதச் சான்று",
+        "mr": "नुकसानाचा पुरावा",
+    },
+    "site verification": {
+        "hi": "स्थान की जांच",
+        "as": "স্থান যাচাই",
+        "ta": "இட சரிபார்ப்பு",
+        "mr": "ठिकाण पडताळणी",
+    },
+    "official verification": {
+        "hi": "सरकारी जांच",
+        "as": "চৰকাৰী যাচাই",
+        "ta": "அரசு சரிபார்ப்பு",
+        "mr": "सरकारी पडताळणी",
+    },
+    "Request": {
+        "hi": "मांगें",
+        "as": "বিচাৰক",
+        "ta": "கேளுங்கள்",
+        "mr": "मागा",
+    },
+    "Ask": {
+        "hi": "पूछें",
+        "as": "সোধক",
+        "ta": "கேளுங்கள்",
+        "mr": "विचारा",
+    },
+    "Inquire": {
+        "hi": "जानकारी लें",
+        "as": "সোধক",
+        "ta": "விசாரிக்கவும்",
+        "mr": "विचारा",
+    },
+    "Prepare": {
+        "hi": "तैयार रखें",
+        "as": "সাজু ৰাখক",
+        "ta": "தயார் வைத்திருங்கள்",
+        "mr": "तयार ठेवा",
+    },
+    "proof": {
+        "hi": "प्रमाण",
+        "as": "প্ৰমাণ",
+        "ta": "சான்று",
+        "mr": "पुरावा",
+    },
+    "land documents": {
+        "hi": "जमीन के कागज",
+        "as": "মাটিৰ নথি",
+        "ta": "நில ஆவணங்கள்",
+        "mr": "जमीन कागदपत्रे",
+    },
+    "Awaas+/SECC list": {
+        "hi": "Awaas+ / SECC सूची",
+        "as": "Awaas+ / SECC তালিকা",
+        "ta": "Awaas+ / SECC பட்டியல்",
+        "mr": "Awaas+ / SECC यादी",
+    },
+
 }
 
 
@@ -877,9 +984,13 @@ def safety_verify(action_plan: dict[str, Any], language: str = "en") -> dict[str
         action_plan["plain_language_summary"] = fallback["status"]
         action_plan["human_in_loop"] = fallback["human_in_loop"]
         action_plan["safety_rules_applied"] = safety_rules()
-        action_plan["safety_warning"] = (
-            "Some unsafe eligibility wording was detected and replaced with safer guidance."
-        )
+        action_plan["safety_warning"] = {
+            "en": "Some unsafe eligibility wording was detected and replaced with safer guidance.",
+            "hi": "कुछ असुरक्षित पात्रता भाषा मिली और उसे सुरक्षित मार्गदर्शन से बदल दिया गया।",
+            "as": "কিছু অসুৰক্ষিত যোগ্যতাৰ ভাষা পোৱা গৈছিল আৰু সুৰক্ষিত মাৰ্গদৰ্শনেৰে সলনি কৰা হ’ল।",
+            "ta": "சில பாதுகாப்பற்ற தகுதி வார்த்தைகள் கண்டறியப்பட்டதால் அவை பாதுகாப்பான வழிகாட்டலால் மாற்றப்பட்டன.",
+            "mr": "काही असुरक्षित पात्रता भाषा आढळली आणि ती सुरक्षित मार्गदर्शनाने बदलली.",
+        }.get(language, "Some unsafe eligibility wording was detected and replaced with safer guidance.")
 
     return action_plan
 
