@@ -19,7 +19,9 @@ Instead of asking vulnerable users to understand scheme language, forms, proof r
 - a BDO / Gram Panchayat action plan,
 - and a responsible AI safety boundary that avoids false approval claims.
 
-The system is designed for a **trusted helper workflow**, where a Panchayat helper, NGO worker, relief volunteer, village representative, or family member can assist the beneficiary.
+The system is designed for a **trusted helper workflow**, where a Panchayat helper, NGO worker, relief volunteer, village representative, or family member can assist the beneficiary. GharDisha AI is a responsive web application designed for both desktop and mobile browsers. It follows a mobile-accessible, trusted-helper-assisted access model, so a rural family does not need a laptop or native app installation. A family member, Panchayat representative, NGO worker, relief volunteer, or local digital service center can open the tool through a simple browser link and help the family prepare for the official process.
+
+
 
 ---
 
