@@ -397,16 +397,17 @@ ghardisha-ai/
 │   ├── index.html
 │   └── vite.config.js
 │
-├── README.md
-├── SETUP_GUIDE.md
-├── architecture.md
-├── FIXES_APPLIED.md
+├── README.md                 # Main judge-facing documentation and setup guide
+├── architecture.md           # Technical architecture summary
+├── FIXES_APPLIED.md          # Optional development notes, if kept
 └── .gitignore
 ```
 
 ---
 
 ## 14. Local Setup
+
+The setup instructions are intentionally kept inside this README so judges and reviewers do not need to open a separate setup file.
 
 ### Prerequisites
 
@@ -510,6 +511,39 @@ http://localhost:5173
 | Variable | Required | Purpose |
 |---|---:|---|
 | `VITE_API_URL` | Optional | Backend API base URL. Defaults to `http://localhost:8000` |
+
+### Deployment Notes: Render + Vercel
+
+Recommended hackathon deployment split:
+
+```text
+Backend FastAPI → Render
+Frontend Vite React → Vercel
+```
+
+Render backend settings:
+
+```text
+Root Directory: backend
+Build Command: pip install -r requirements.txt
+Start Command: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+```
+
+Vercel frontend settings:
+
+```text
+Root Directory: frontend
+Build Command: npm run build
+Output Directory: dist
+```
+
+Set the deployed backend URL in Vercel:
+
+```env
+VITE_API_URL=https://your-render-backend-url.onrender.com
+```
+
+Do not commit `.env`, `.env.local`, API keys, `node_modules`, or `.venv`. Store production keys only in Render / Vercel environment variables.
 
 ---
 
@@ -629,7 +663,7 @@ Use `.env.example` for safe configuration examples.
 - Add stronger document OCR for scanned certificates.
 - Add exportable BDO visit summary PDF.
 - Add audit logs for responsible AI review.
-- Add deployment-ready environment configuration.
+- Add production monitoring, custom domain, and stronger deployment observability.
 
 ---
 
