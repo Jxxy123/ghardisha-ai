@@ -25,6 +25,7 @@ from .file_processing import extract_document_text
 from .kb import load_kb, retrieve_snippets, safety_rules
 from .reasoning import analyze_story
 from .speech import mint_realtime_token, voice_enabled
+from fastapi.middleware.cors import CORSMiddleware
 
 load_dotenv()
 
@@ -55,6 +56,8 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         frontend_origin,
+        "https://ghardisha-ai.vercel.app",
+        "https://ghardisha-ai-git-main-umme-fatima-sadia-hossain-s-projects.vercel.app",
         "http://127.0.0.1:5173",
         "http://localhost:5173",
     ],
